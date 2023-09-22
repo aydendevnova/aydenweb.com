@@ -18,4 +18,14 @@
   label {
     @apply font-inter text-[16px] font-normal text-label;
   }
+  ol,
+  ul {
+    @apply list-outside list-disc;
+  }
+  li {
+    @apply py-1;
+  }
+  hr {
+    @apply my-2 border border-gray-200;
+  }
 }

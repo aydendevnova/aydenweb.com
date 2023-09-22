@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 import { PortableText } from "@portabletext/react";
 import blueWave from "~/assets/blue-wave.png";
-import getHero from "~/sanity/sanity-utils";
+import { getHero, getServices } from "~/sanity/sanity-utils";
 
 import { headers } from "next/headers";
 import { getServerPathname } from "~/utils/utils";
@@ -20,10 +20,11 @@ export default async function Home() {
   const headersList = headers();
   const pathname = getServerPathname(headersList);
   const hero = await getHero(pathname);
+  const services = await getServices();
   return (
     <>
       <div
-        className="absolute right-0 top-32 h-full w-full bg-contain bg-right-bottom bg-no-repeat"
+        className="absolute -top-36 right-0 h-full w-full bg-contain bg-right-bottom bg-no-repeat"
         style={{ backgroundImage: `url(${blueWave.src})` }}
       ></div>
       <div className="relative flex min-h-screen flex-col justify-center">
@@ -46,6 +47,25 @@ export default async function Home() {
           <Button type="link" href="/about">
             Get in touch
           </Button>
+        </div>
+        <div className="h-96"></div>
+        <div className="flex flex-col items-center">
+          <div className="flex flex-col items-start gap-3 px-8">
+            <h2 className="-ml-4">{services.headerText}</h2>
+            <div className="flex gap-12">
+              {services.services.map((service, i) => (
+                <div key={service.serviceName} className="w-72">
+                  <p className="-ml-4 text-label">
+                    {i < 10 ? "0" : ""}
+                    {i + 1}
+                  </p>
+                  <hr className="-ml-4" />
+                  <p className="-ml-4 pb-4 font-bold">{service.serviceName}</p>
+                  <PortableText value={service.serviceContent} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
