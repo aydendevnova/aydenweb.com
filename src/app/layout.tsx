@@ -28,8 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
-      <Header />
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main className="relative">{children}</main>
+      </body>
     </html>
   );
 }
