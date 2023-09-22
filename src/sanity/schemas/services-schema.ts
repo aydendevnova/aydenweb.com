@@ -1,6 +1,6 @@
 import { PortableTextBlock, defineField, defineType } from "sanity";
 
-export type Services = {
+export type ServicesSchema = {
   headerText: string;
   services: Service[];
 };

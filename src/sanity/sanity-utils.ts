@@ -1,8 +1,11 @@
 import { createClient } from "next-sanity";
 import { groq } from "next-sanity";
-import { Hero } from "./schemas/hero-schema";
+import { HeroSchema } from "./schemas/hero-schema";
 import { env } from "~/env.mjs";
-import { Services } from "./schemas/services-schema";
+import { ServicesSchema } from "./schemas/services-schema";
+import { ProjectSchema } from "./schemas/projects-schema";
+import imageUrlBuilder from "@sanity/image-url";
+import { IndexSchema } from "./schemas/index-schema";
 
 const client = createClient({
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -10,6 +13,16 @@ const client = createClient({
   apiVersion: "2023-09-21",
   useCdn: true,
 });
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(client);
+
+// Then we like to make a simple function like this that gives the
+// builder an image and returns the builder for you to specify additional
+// parameters:
+export function urlFor(source: any) {
+  return builder.image(source);
+}
 
 export async function getHero(pathname: string) {
   const query = groq`*[_type == "hero" && pathname == $pathname][0]{
@@ -21,7 +34,7 @@ export async function getHero(pathname: string) {
 
   const data = await client.fetch(query, params);
 
-  return data as Hero;
+  return data as HeroSchema;
 }
 
 export async function getServices() {
@@ -32,5 +45,40 @@ export async function getServices() {
 
   const data = await client.fetch(query);
 
-  return data as Services;
+  return data as ServicesSchema;
+}
+
+export async function getProjects(options: { showcaseOnly: boolean }) {
+  let query;
+  if (options?.showcaseOnly) {
+    query = groq`*[_type == "projects" && showcase == true]{
+      name,
+      tags,
+      description,
+      liveLink,
+      "image": image.asset->url
+    }`;
+  } else {
+    query = groq`*[_type == "projects"]{
+      name,
+      tags,
+      description,
+      liveLink,
+      "image": image.asset->url
+    }`;
+  }
+
+  const data = await client.fetch(query);
+
+  return data as ProjectSchema[];
+}
+
+export async function getIndex() {
+  const query = groq`*[_type == "index"][0]{
+      "image": image.asset
+    }`;
+
+  const data = await client.fetch(query);
+
+  return data as IndexSchema;
 }

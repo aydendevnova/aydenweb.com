@@ -21,6 +21,9 @@ export default {
       backgroundColor: {
         btn: "#BFDCFE",
       },
+      colors: {
+        "light-gray": "#F1F1F1",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

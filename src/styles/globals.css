@@ -4,13 +4,13 @@
 
 @layer components {
   h1 {
-    @apply font-montserrat text-[50px] font-bold text-black;
+    @apply font-montserrat text-[48px] font-bold text-black;
   }
   h2 {
-    @apply font-montserrat text-[24px] font-normal text-gray;
+    @apply font-montserrat text-[26px] font-normal text-gray;
   }
   p {
-    @apply font-inter text-[16px] text-base font-normal;
+    @apply font-inter text-[16px] font-normal;
   }
   b {
     @apply font-semibold;
@@ -23,7 +23,7 @@
     @apply list-outside list-disc;
   }
   li {
-    @apply py-1;
+    @apply py-1 text-[18px];
   }
   hr {
     @apply my-2 border border-gray-200;

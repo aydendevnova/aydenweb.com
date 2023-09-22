@@ -11,50 +11,67 @@ export const metadata: Metadata = {
 };
 import { PortableText } from "@portabletext/react";
 import blueWave from "~/assets/blue-wave.png";
-import { getHero, getServices } from "~/sanity/sanity-utils";
+import {
+  getHero,
+  getIndex,
+  getProjects,
+  getServices,
+  urlFor,
+} from "~/sanity/sanity-utils";
 
 import { headers } from "next/headers";
 import { getServerPathname } from "~/utils/utils";
+import { ProjectSchema } from "~/sanity/schemas/projects-schema";
+import { RxArrowRight } from "react-icons/rx";
+import Image from "next/image";
 
 export default async function Home() {
   const headersList = headers();
   const pathname = getServerPathname(headersList);
   const hero = await getHero(pathname);
   const services = await getServices();
+  const projects = await getProjects({ showcaseOnly: true });
+  const index = await getIndex();
+  console.log(index.image);
   return (
     <>
-      <div
-        className="absolute -top-36 right-0 h-full w-full bg-contain bg-right-bottom bg-no-repeat"
-        style={{ backgroundImage: `url(${blueWave.src})` }}
-      ></div>
-      <div className="relative flex min-h-screen flex-col justify-center">
-        <div className="container flex max-w-5xl flex-col gap-3 px-4 py-16 md:pl-16 lg:pl-36">
-          <h2>{hero.topText}</h2>
-          <PortableText
-            value={hero.header}
-            components={{
-              block: ({ children }) => <h1 className="">{children}</h1>,
+      <div className="bg-light-gray">
+        <div className="relative flex min-h-screen flex-col justify-center">
+          <div
+            className="absolute right-0 top-28 h-full w-full bg-contain bg-right-bottom bg-no-repeat opacity-40"
+            style={{
+              backgroundImage: `url(${blueWave.src})`,
+              filter: "saturate(70%)",
             }}
-          />
+          ></div>
+          <div className="flex max-w-5xl flex-col gap-3 px-4 py-16 md:pl-16 lg:pl-36">
+            <h2>{hero.topText}</h2>
+            <PortableText
+              value={hero.header}
+              components={{
+                block: ({ children }) => <h1 className="">{children}</h1>,
+              }}
+            />
 
-          <PortableText
-            value={hero.description}
-            components={{
-              block: ({ children }) => <h2 className="">{children}</h2>,
-            }}
-          />
+            <PortableText
+              value={hero.description}
+              components={{
+                block: ({ children }) => <h2>{children}</h2>,
+              }}
+            />
 
-          <Button type="link" href="/about">
-            Get in touch
-          </Button>
+            <Button type="link" href="/about">
+              Get in touch
+            </Button>
+          </div>
         </div>
-        <div className="h-96"></div>
+        <div className="h-32"></div>
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-start gap-3 px-8">
-            <h2 className="-ml-4">{services.headerText}</h2>
-            <div className="flex gap-12">
+            <h2 className="-ml-4 pb-8 font-semibold">{services.headerText}</h2>
+            <div className="flex gap-16">
               {services.services.map((service, i) => (
-                <div key={service.serviceName} className="w-72">
+                <div key={`${service.serviceName}${i}`} className="w-72">
                   <p className="-ml-4 text-label">
                     {i < 10 ? "0" : ""}
                     {i + 1}
@@ -67,7 +84,68 @@ export default async function Home() {
             </div>
           </div>
         </div>
+        <div className="h-60"></div>
       </div>
+      <div className="-mt-20 flex w-full justify-center">
+        <div className="flex max-w-5xl flex-col gap-12 ">
+          {projects.map((project, i) => (
+            <Project project={project} key={`${project.name}${i}`} />
+          ))}
+          <Button type="link" href="/projects" className="mx-auto">
+            View more projects
+          </Button>
+        </div>
+      </div>
+      <div className="h-60"></div>
+      <Image
+        src={urlFor(index.image).url()}
+        width={720}
+        height={720}
+        alt="wave"
+        className="h-[600px] w-screen object-cover object-center"
+      />
+      <div className="h-60"></div>
     </>
+  );
+}
+
+function Project({ project }: { project: ProjectSchema }) {
+  return (
+    <div className="flex max-w-6xl animate-fade cursor-pointer justify-center transition-transform duration-200 hover:scale-105">
+      <div>
+        <Image
+          src={project.image}
+          width={720}
+          height={720}
+          alt={project.name}
+          className="h-[300px] w-[500px] rounded-l-[60px] object-cover object-center"
+        />
+      </div>
+      <div className="flex w-full flex-col justify-center rounded-r-[60px] bg-white shadow-lg">
+        <div className="mx-8 flex max-w-xl flex-col gap-2">
+          <h2 className="font-semibold">{project.name}</h2>
+          <div className="-mt-1 flex gap-16">
+            <label className="text-label">
+              {project.tags.map((tag: string, i) => (
+                <span key={`${tag}${i}`}>
+                  {tag} {i < project.tags.length - 1 ? "• " : ""}
+                </span>
+              ))}
+            </label>
+          </div>
+          {/* <PortableText value={project.description} /> */}
+          <p>{project.description}</p>
+          <Link
+            href={project.liveLink}
+            className="flex cursor-pointer gap-4 hover:underline"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <span className="font-semibold">{project.liveLink}</span>
+            <RxArrowRight size={24} />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }

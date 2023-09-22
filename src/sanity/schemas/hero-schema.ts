@@ -5,7 +5,7 @@ import {
   defineType,
 } from "sanity";
 
-export type Hero = {
+export type HeroSchema = {
   pathname: string;
   topText: string;
   header: PortableTextBlock[];
