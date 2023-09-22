@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  h1 {
+    @apply font-montserrat text-[50px] font-bold text-black;
+  }
+  h2 {
+    @apply font-montserrat text-[24px] font-normal text-gray;
+  }
+  p {
+    @apply font-inter text-[16px] text-base font-normal;
+  }
+  b {
+    @apply font-semibold;
+  }
+  label {
+    @apply font-inter text-[16px] font-normal text-label;
+  }
+}
