@@ -5,7 +5,7 @@ import { env } from "~/env.mjs";
 import { ServicesSchema } from "./schemas/services-schema";
 import { ProjectSchema } from "./schemas/projects-schema";
 import imageUrlBuilder from "@sanity/image-url";
-import { IndexSchema } from "./schemas/index-schema";
+import { PhotosSchema } from "./schemas/photos-schema";
 import { SkillSchema } from "./schemas/skills-schema";
 import { ContactSchema } from "./schemas/contact-schema";
 import { AboutSchema } from "./schemas/about-schema";
@@ -50,7 +50,8 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
       tags,
       description,
       liveLink,
-      "image": image.asset->url
+      "image": image.asset->url,
+      asdf
     }`;
   } else {
     query = groq`*[_type == "projects"]|order(orderRank){
@@ -67,14 +68,14 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
   return data as ProjectSchema[];
 }
 
-export async function getIndex() {
-  const query = groq`*[_type == "index"][0]{
+export async function getPhoto() {
+  const query = groq`*[_type == "photos" && showCaseIndex][0]{
       "image": image.asset->url
     }`;
 
   const data = await client.fetch(query);
 
-  return data as IndexSchema;
+  return data as PhotosSchema;
 }
 
 export async function getSkills() {
@@ -111,7 +112,7 @@ export async function getAbout() {
   const query = groq`*[_type == "about"]|order(orderRank){
     header,
     description,
-    test
+    sd
   }`;
   const data = await client.fetch(query);
   console.log(data);

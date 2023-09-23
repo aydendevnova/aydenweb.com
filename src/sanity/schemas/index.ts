@@ -1,7 +1,7 @@
 import heroSchema from "./hero-schema";
 import projectsSchema from ".//projects-schema";
 import servicesSchema from "./services-schema";
-import indexSchema from "./index-schema";
+import photosSchema from "./photos-schema";
 import skillsSchema from "./skills-schema";
 import contactSchema from "./contact-schema";
 import aboutSchema from "./about-schema";
@@ -11,7 +11,7 @@ const schemas = [
   heroSchema,
   servicesSchema,
   projectsSchema,
-  indexSchema,
+  photosSchema,
   skillsSchema,
   contactSchema,
   aboutSchema,

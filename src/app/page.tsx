@@ -14,7 +14,7 @@ import blueWave from "~/assets/blue-wave.png";
 import {
   getContact,
   getHero,
-  getIndex,
+  getPhoto,
   getProjects,
   getServices,
   getSkills,
@@ -32,7 +32,7 @@ export default async function Home() {
   const hero = await getHero();
   const services = await getServices();
   const projects = await getProjects({ showcaseOnly: true });
-  const index = await getIndex();
+  const index = await getPhoto();
   const skills = await getSkills();
 
   return (
@@ -83,15 +83,15 @@ export default async function Home() {
           </Button>
         </div>
       </div>
-      <div className="h-60"></div>
+      <div className="h-40"></div>
       <Image
         src={index.image}
         width={720}
         height={720}
         alt="wave"
-        className="h-[600px] w-screen object-cover object-center"
+        className="mx-auto my-8 h-96 w-full max-w-4xl rounded-xl object-cover shadow-lg"
       />
-      <div className="h-52"></div>
+      <div className="h-48"></div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl flex-col items-start gap-3 px-8">
           <h2 className="pb-8 font-semibold">{skills.headerText}</h2>
@@ -102,7 +102,7 @@ export default async function Home() {
                 className="my-3 flex w-20 flex-col items-center justify-center"
               >
                 <Image
-                  src={(skill.image)}
+                  src={skill.image}
                   width={72}
                   height={72}
                   alt={skill.title}

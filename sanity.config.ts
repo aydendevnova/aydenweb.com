@@ -14,7 +14,7 @@ import {
 } from "@sanity/orderable-document-list";
 // import { schemaTypes } from "./schemas";
 
-const ORDERABLE_TYPES = ["projects", "about"];
+const ORDERABLE_TYPES = ["projects", "about", "photos"];
 
 export default defineConfig({
   name: "default",
@@ -38,6 +38,7 @@ export default defineConfig({
                 ),
             ),
 
+            orderableDocumentListDeskItem({ type: "photos", S, context }),
             orderableDocumentListDeskItem({ type: "projects", S, context }),
             orderableDocumentListDeskItem({ type: "about", S, context }),
           ]);

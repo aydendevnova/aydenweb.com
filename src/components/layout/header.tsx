@@ -15,20 +15,20 @@ export default function Header() {
   return pathname.includes("/admin") ? null : (
     <Mounted>
       <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Menu">
-        <div className="bg-light-gray/50 mx-auto flex w-48 flex-col gap-4">
+        <div className="mx-auto flex w-48 flex-col gap-4 bg-light-gray/50 backdrop-blur-md">
           <Links setMenuOpen={setMenuOpen} />
         </div>
       </Modal>
-      <header className="fixed z-10 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
-        <div className="flex w-full items-center justify-between gap-4">
+      <header className="fixed z-20 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
+        <div className="relative flex w-full items-center justify-between gap-4">
           <div className="items-center">
             <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-              <span className="hover:text-accent bg-light-gray/50 flex w-full gap-2 rounded-md px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-2xl text-slate-800 backdrop-blur-md transition-colors">
+              <span className="flex w-full gap-2 rounded-md bg-light-gray/50 px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-2xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent">
                 <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span>
               </span>
             </a>
           </div>
-          <div className="bg-light-gray/50 flex shrink-0 items-center gap-2 rounded-md px-4 py-2 backdrop-blur-md">
+          <div className="flex shrink-0 items-center gap-2 rounded-md bg-light-gray/50 px-4 py-2 backdrop-blur-md">
             {pathname != "/" && (
               <Link
                 href={"/"}
@@ -37,7 +37,7 @@ export default function Header() {
                 <div className="py-1 pr-2 text-2xl text-black">
                   <BiArrowBack
                     size={30}
-                    className="hover:text-accent transition-colors duration-300"
+                    className="transition-colors duration-300 hover:text-accent"
                   />
                 </div>
               </Link>
@@ -50,7 +50,7 @@ export default function Header() {
               <button className="header-link" onClick={() => setMenuOpen(true)}>
                 <RxHamburgerMenu
                   size={30}
-                  className="hover:text-accent transition-colors"
+                  className="transition-colors hover:text-accent"
                 />
               </button>
             </div>
@@ -87,7 +87,7 @@ function HeaderLink({
   return (
     <Link href={link}>
       <div
-        className="hover:text-accent flex w-full cursor-pointer gap-2 rounded-full px-2 text-2xl text-black transition-colors"
+        className="flex w-full cursor-pointer gap-2 rounded-full px-2 text-2xl text-black transition-colors hover:text-accent"
         onClick={() => setMenuOpen(false)}
       >
         {text}

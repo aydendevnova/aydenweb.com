@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
 import Hero from "~/components/hero";
+import PortableTextWithImageLink from "~/components/ui/portable-text-image-link";
 import Button from "~/components/ui/styled/Button";
 import { getAbout, getHero, getQuotes } from "~/sanity/sanity-utils";
 import { getServerPathname } from "~/utils/utils";
@@ -31,7 +32,7 @@ export default async function About() {
             {!!about && about[0] && (
               <div key={`${about[0].header}`} className="font-semibold">
                 <h2 className="mb-4 font-semibold">{about[0].header}</h2>
-                <PortableText value={about[0].description} />
+                <PortableTextWithImageLink value={about[0].description} />
               </div>
             )}
           </div>
@@ -71,23 +72,7 @@ export default async function About() {
               .map((about, i) => (
                 <div key={`${about.header}${i}`} className="font-semibold">
                   <h2 className="mb-4 font-semibold">{about.header}</h2>
-                  <PortableText
-                    value={about.description}
-                    components={{
-                      marks: {
-                        link: ({ text, value }) => (
-                          <a
-                            href={value}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="text-blue-500 hover:underline"
-                          >
-                            {text}
-                          </a>
-                        ),
-                      },
-                    }}
-                  />
+                  <PortableTextWithImageLink value={about.description} />
                 </div>
               ))}
           </div>
