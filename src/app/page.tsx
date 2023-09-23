@@ -16,6 +16,7 @@ import {
   getIndex,
   getProjects,
   getServices,
+  getSkills,
   urlFor,
 } from "~/sanity/sanity-utils";
 
@@ -32,7 +33,8 @@ export default async function Home() {
   const services = await getServices();
   const projects = await getProjects({ showcaseOnly: true });
   const index = await getIndex();
-  console.log(index.image);
+  const skills = await getSkills();
+
   return (
     <>
       <div className="bg-light-gray">
@@ -104,6 +106,31 @@ export default async function Home() {
         alt="wave"
         className="h-[600px] w-screen object-cover object-center"
       />
+      <div className="h-60"></div>
+      <div className="flex w-full flex-col items-center">
+        <div className="flex w-full max-w-5xl flex-col items-start gap-3 px-8">
+          <h2 className="pb-8 font-semibold">{skills.headerText}</h2>
+          <div className="grid w-full grid-cols-6 justify-between">
+            {skills.skills.map((skill, i) => (
+              <div
+                key={`${skill.title}${i}`}
+                className="my-3 flex w-20 flex-col items-center justify-center"
+              >
+                <Image
+                  src={urlFor(skill.image).url()}
+                  width={72}
+                  height={72}
+                  alt={skill.title}
+                  className="h-[72px] w-[72px] object-contain object-center"
+                />
+                <p className="whitespace-nowrap pt-4 font-semibold">
+                  {skill.title}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <div className="h-60"></div>
     </>
   );
