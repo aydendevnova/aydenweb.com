@@ -23,7 +23,8 @@ export default function Button({
       className={`hover:bg-gray/20 text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full bg-btn px-12 py-4 transition-transform duration-200 hover:scale-105 ${className}`}
       onClick={onClick}
     >
-      {children}
+      <p>{children}</p>
+
       <RxArrowRight size={24} className="" />
     </button>
   ) : (
@@ -31,7 +32,7 @@ export default function Button({
       className={`hover:bg-gray/20 text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full bg-btn px-12 py-4 no-underline transition-transform duration-200 hover:scale-105 ${className}`}
       href={href || "/"}
     >
-      {children}
+      <p>{children}</p>
       <RxArrowRight size={24} className="" />
     </Link>
   );

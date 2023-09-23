@@ -62,7 +62,7 @@ export default async function Home() {
               }}
             />
 
-            <Button type="link" href="/about">
+            <Button type="link" href="/about" className="mt-6">
               Get in touch
             </Button>
           </div>
@@ -106,7 +106,7 @@ export default async function Home() {
         alt="wave"
         className="h-[600px] w-screen object-cover object-center"
       />
-      <div className="h-60"></div>
+      <div className="h-40"></div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl flex-col items-start gap-3 px-8">
           <h2 className="pb-8 font-semibold">{skills.headerText}</h2>
