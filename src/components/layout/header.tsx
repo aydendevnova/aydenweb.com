@@ -23,12 +23,12 @@ export default function Header() {
         <div className="flex w-full items-center justify-between gap-4">
           <div className="items-center">
             <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-              <span className="hover:text-accent bg-light-gray/50 flex w-full gap-2 rounded-xl px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-2xl text-slate-800 backdrop-blur-md transition-colors">
+              <span className="hover:text-accent bg-light-gray/50 flex w-full gap-2 rounded-md px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-2xl text-slate-800 backdrop-blur-md transition-colors">
                 <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span>
               </span>
             </a>
           </div>
-          <div className="bg-light-gray/50 flex shrink-0 items-center gap-2 rounded-xl px-4 py-2 backdrop-blur-md">
+          <div className="bg-light-gray/50 flex shrink-0 items-center gap-2 rounded-md px-4 py-2 backdrop-blur-md">
             {pathname != "/" && (
               <Link
                 href={"/"}

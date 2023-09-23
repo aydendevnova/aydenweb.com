@@ -7,6 +7,7 @@ import { ProjectSchema } from "./schemas/projects-schema";
 import imageUrlBuilder from "@sanity/image-url";
 import { IndexSchema } from "./schemas/index-schema";
 import { SkillSchema } from "./schemas/skills-schema";
+import { ContactSchema } from "./schemas/contact-schema";
 
 const client = createClient({
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -93,4 +94,20 @@ export async function getSkills() {
   const data = await client.fetch(query);
 
   return data as SkillSchema;
+}
+
+export async function getContact() {
+  const query = groq`*[_type == "contact"][0]{
+     contactHeader,
+     description,
+     footerText,
+     socials[]{
+       link,
+       "icon": icon.asset->url
+     }
+    }`;
+
+  const data = await client.fetch(query);
+
+  return data as ContactSchema;
 }

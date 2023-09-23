@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 import { PortableText } from "@portabletext/react";
 import blueWave from "~/assets/blue-wave.png";
 import {
+  getContact,
   getHero,
   getIndex,
   getProjects,
@@ -25,6 +26,7 @@ import { getServerPathname } from "~/utils/utils";
 import { ProjectSchema } from "~/sanity/schemas/projects-schema";
 import { RxArrowRight } from "react-icons/rx";
 import Image from "next/image";
+import ContactPage from "~/components/contact-page";
 
 export default async function Home() {
   const headersList = headers();
@@ -46,7 +48,7 @@ export default async function Home() {
               filter: "saturate(70%)",
             }}
           ></div>
-          <div className="flex max-w-5xl flex-col gap-3 px-4 py-16 md:pl-16 lg:pl-36">
+          <div className="relative z-10 flex max-w-5xl flex-col gap-3 px-4 py-16 md:pl-16 lg:pl-36">
             <h2>{hero.topText}</h2>
             <PortableText
               value={hero.header}
@@ -106,7 +108,7 @@ export default async function Home() {
         alt="wave"
         className="h-[600px] w-screen object-cover object-center"
       />
-      <div className="h-40"></div>
+      <div className="h-52"></div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl flex-col items-start gap-3 px-8">
           <h2 className="pb-8 font-semibold">{skills.headerText}</h2>
@@ -129,16 +131,20 @@ export default async function Home() {
               </div>
             ))}
           </div>
+          <Button type="link" href="/about" className="mt-6">
+            Contact Me
+          </Button>
         </div>
       </div>
       <div className="h-60"></div>
+      <ContactPage />
     </>
   );
 }
 
 function Project({ project }: { project: ProjectSchema }) {
   return (
-    <div className="flex max-w-6xl animate-fade cursor-pointer justify-center transition-transform duration-200 hover:scale-105">
+    <div className="flex max-w-6xl animate-fade cursor-pointer justify-center transition-transform duration-300 hover:scale-105">
       <div>
         <Image
           src={project.image}

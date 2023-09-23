@@ -18,11 +18,10 @@ export default {
         base: "#4F4F4F",
         label: "#7C7F84",
       },
-      backgroundColor: {
-        btn: "#BFDCFE",
-      },
       colors: {
-        "light-gray": "#F1F1F1",
+        "light-gray": "#F5F5F5",
+        accent: "#BFDCFE",
+        accent2: "#6C7794",
       },
     },
   },
