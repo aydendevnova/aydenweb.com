@@ -4,6 +4,8 @@ import servicesSchema from "./services-schema";
 import indexSchema from "./index-schema";
 import skillsSchema from "./skills-schema";
 import contactSchema from "./contact-schema";
+import aboutSchema from "./about-schema";
+import quoteSchema from "./quote-schema";
 
 const schemas = [
   heroSchema,
@@ -12,6 +14,8 @@ const schemas = [
   indexSchema,
   skillsSchema,
   contactSchema,
+  aboutSchema,
+  quoteSchema,
 ];
 
 export default schemas;

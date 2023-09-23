@@ -45,6 +45,11 @@ const projectsSchema = defineType({
       title: "Image",
       type: "image",
     }),
+    defineField({
+      name: "orderRank",
+      title: "Order Rank",
+      type: "string",
+    }),
   ],
 });
 

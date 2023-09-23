@@ -7,7 +7,7 @@ import {
 } from "sanity";
 
 export type IndexSchema = {
-  image: Image;
+  image: string;
 };
 
 const indexSchema = defineType({

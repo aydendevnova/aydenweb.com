@@ -1,9 +1,20 @@
-import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { SchemaType, defineConfig } from "sanity";
+import {
+  DocumentListItemBuilder,
+  ListItemBuilder,
+  deskTool,
+} from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import schemas from "~/sanity/schemas";
 import { env } from "~/env.mjs";
+import {
+  orderRankField,
+  orderRankOrdering,
+  orderableDocumentListDeskItem,
+} from "@sanity/orderable-document-list";
 // import { schemaTypes } from "./schemas";
+
+const ORDERABLE_TYPES = ["projects", "about"];
 
 export default defineConfig({
   name: "default",
@@ -13,9 +24,42 @@ export default defineConfig({
   dataset: "production",
   basePath: "/admin",
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [
+    deskTool({
+      structure: (S, context) => {
+        return S.list()
+          .title("Content")
+          .items([
+            // Minimum required configuration
+            ...S.documentTypeListItems().filter(
+              (item) =>
+                !ORDERABLE_TYPES.includes(
+                  (item.getSchemaType() as SchemaType)?.name,
+                ),
+            ),
 
-  schema: {
-    types: schemas,
-  },
+            orderableDocumentListDeskItem({ type: "projects", S, context }),
+            orderableDocumentListDeskItem({ type: "about", S, context }),
+          ]);
+      },
+    }),
+    visionTool(),
+  ],
+
+  schema: { types: schemas },
+
+  // schema: {
+  //   types: schemas.map((schema) => {
+  //     return {...schema, {
+  //         orderings: [orderRankOrdering],
+  //         fields: [
+  //           // Minimum required configuration
+  //           orderRankField({ type: "category" }),
+
+  //           // ...all other fields
+  //         ],
+  //       },
+  //     }
+  //   }),
+  // },
 });

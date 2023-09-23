@@ -12,7 +12,7 @@ export type SkillSchema = {
 };
 
 export type Skill = {
-  image: Image;
+  image: string;
   title: string;
 };
 

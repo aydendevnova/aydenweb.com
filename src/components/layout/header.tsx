@@ -12,7 +12,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  return (
+  return pathname.includes("/admin") ? null : (
     <Mounted>
       <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Menu">
         <div className="bg-light-gray/50 mx-auto flex w-48 flex-col gap-4">

@@ -8,6 +8,8 @@ import imageUrlBuilder from "@sanity/image-url";
 import { IndexSchema } from "./schemas/index-schema";
 import { SkillSchema } from "./schemas/skills-schema";
 import { ContactSchema } from "./schemas/contact-schema";
+import { AboutSchema } from "./schemas/about-schema";
+import { QuoteSchema } from "./schemas/quote-schema";
 
 const client = createClient({
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -16,27 +18,17 @@ const client = createClient({
   useCdn: true,
 });
 
-// Get a pre-configured url-builder from your sanity client
-const builder = imageUrlBuilder(client);
-
-// Then we like to make a simple function like this that gives the
-// builder an image and returns the builder for you to specify additional
-// parameters:
-export function urlFor(source: any) {
-  return builder.image(source);
-}
-
-export async function getHero(pathname: string) {
-  const query = groq`*[_type == "hero" && pathname == $pathname][0]{
+export async function getHero() {
+  const query = groq`*[_type == "hero"]{
     topText,
     header,
     description,
+    pathname
   }`;
-  const params = { pathname };
 
-  const data = await client.fetch(query, params);
+  const data = await client.fetch(query);
 
-  return data as HeroSchema;
+  return data as HeroSchema[];
 }
 
 export async function getServices() {
@@ -53,7 +45,7 @@ export async function getServices() {
 export async function getProjects(options: { showcaseOnly: boolean }) {
   let query;
   if (options?.showcaseOnly) {
-    query = groq`*[_type == "projects" && showcase == true]{
+    query = groq`*[_type == "projects" && showcase == true]|order(orderRank){
       name,
       tags,
       description,
@@ -61,7 +53,7 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
       "image": image.asset->url
     }`;
   } else {
-    query = groq`*[_type == "projects"]{
+    query = groq`*[_type == "projects"]|order(orderRank){
       name,
       tags,
       description,
@@ -77,7 +69,7 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
 
 export async function getIndex() {
   const query = groq`*[_type == "index"][0]{
-      "image": image.asset
+      "image": image.asset->url
     }`;
 
   const data = await client.fetch(query);
@@ -88,7 +80,10 @@ export async function getIndex() {
 export async function getSkills() {
   const query = groq`*[_type == "skills"][0]{
       headerText,
-      skills
+      skills[]{
+        title,
+        "image": image.asset->url
+      }
     }`;
 
   const data = await client.fetch(query);
@@ -110,4 +105,30 @@ export async function getContact() {
   const data = await client.fetch(query);
 
   return data as ContactSchema;
+}
+
+export async function getAbout() {
+  const query = groq`*[_type == "about"]|order(orderRank){
+    header,
+    description,
+    test
+  }`;
+  const data = await client.fetch(query);
+  console.log(data);
+  return data as AboutSchema[];
+}
+
+export async function getQuotes() {
+  const query = groq`*[_type == "quote"][0]{
+    header,
+    quotes[]{
+      quoterName,
+      content,
+      quoterTitle,
+      "quoterImage": quoterImage.asset->url
+    }
+  }`;
+
+  const data = await client.fetch(query);
+  return data as QuoteSchema;
 }

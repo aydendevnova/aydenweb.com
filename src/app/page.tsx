@@ -18,7 +18,6 @@ import {
   getProjects,
   getServices,
   getSkills,
-  urlFor,
 } from "~/sanity/sanity-utils";
 
 import { headers } from "next/headers";
@@ -27,11 +26,10 @@ import { ProjectSchema } from "~/sanity/schemas/projects-schema";
 import { RxArrowRight } from "react-icons/rx";
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
+import Hero from "~/components/hero";
 
 export default async function Home() {
-  const headersList = headers();
-  const pathname = getServerPathname(headersList);
-  const hero = await getHero(pathname);
+  const hero = await getHero();
   const services = await getServices();
   const projects = await getProjects({ showcaseOnly: true });
   const index = await getIndex();
@@ -48,26 +46,11 @@ export default async function Home() {
               filter: "saturate(70%)",
             }}
           ></div>
-          <div className="relative z-10 flex max-w-5xl flex-col gap-3 px-4 py-16 md:pl-16 lg:pl-36">
-            <h2>{hero.topText}</h2>
-            <PortableText
-              value={hero.header}
-              components={{
-                block: ({ children }) => <h1 className="">{children}</h1>,
-              }}
-            />
-
-            <PortableText
-              value={hero.description}
-              components={{
-                block: ({ children }) => <h2>{children}</h2>,
-              }}
-            />
-
+          <Hero hero={hero.filter((hero) => hero.pathname === "/").at(0)}>
             <Button type="link" href="/about" className="mt-6">
               Get in touch
             </Button>
-          </div>
+          </Hero>
         </div>
         <div className="h-32"></div>
         <div className="flex flex-col items-center">
@@ -102,7 +85,7 @@ export default async function Home() {
       </div>
       <div className="h-60"></div>
       <Image
-        src={urlFor(index.image).url()}
+        src={index.image}
         width={720}
         height={720}
         alt="wave"
@@ -119,7 +102,7 @@ export default async function Home() {
                 className="my-3 flex w-20 flex-col items-center justify-center"
               >
                 <Image
-                  src={urlFor(skill.image).url()}
+                  src={(skill.image)}
                   width={72}
                   height={72}
                   alt={skill.title}
