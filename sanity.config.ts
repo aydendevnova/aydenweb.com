@@ -12,7 +12,7 @@ import {
   orderRankOrdering,
   orderableDocumentListDeskItem,
 } from "@sanity/orderable-document-list";
-// import { schemaTypes } from "./schemas";
+import { markdownSchema } from "sanity-plugin-markdown";
 
 const ORDERABLE_TYPES = ["projects", "about", "photos"];
 
@@ -25,6 +25,7 @@ export default defineConfig({
   basePath: "/admin",
 
   plugins: [
+    markdownSchema(),
     deskTool({
       structure: (S, context) => {
         return S.list()

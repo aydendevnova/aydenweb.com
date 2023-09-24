@@ -4,7 +4,6 @@ import { HeroSchema } from "./schemas/hero-schema";
 import { env } from "~/env.mjs";
 import { ServicesSchema } from "./schemas/services-schema";
 import { ProjectSchema } from "./schemas/projects-schema";
-import imageUrlBuilder from "@sanity/image-url";
 import { PhotosSchema } from "./schemas/photos-schema";
 import { SkillSchema } from "./schemas/skills-schema";
 import { ContactSchema } from "./schemas/contact-schema";
@@ -50,6 +49,7 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
       tags,
       description,
       liveLink,
+      "slug": slug.current,
       "image": image.asset->url,
       asdf
     }`;
@@ -59,6 +59,7 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
       tags,
       description,
       liveLink,
+      "slug": slug.current,
       "image": image.asset->url
     }`;
   }
@@ -66,6 +67,32 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
   const data = await client.fetch(query);
 
   return data as ProjectSchema[];
+}
+
+export async function getProject(slug: string) {
+  const query = groq`*[_type == "projects" && slug.current == $slug][0]{
+      name,
+      timeline,
+      tags,
+      role,
+      techStack,
+      teamMembers,
+      description,
+      liveLink,
+      "image": image.asset->url,
+      content,
+    }`;
+
+  const data = await client.fetch(query, {
+    slug,
+    next: {
+      revalidate: 1, // look for updates to revalidate cache every hour
+    },
+  });
+
+  return data as ProjectSchema & {
+    content: string;
+  };
 }
 
 export async function getPhoto() {
@@ -111,8 +138,7 @@ export async function getContact() {
 export async function getAbout() {
   const query = groq`*[_type == "about"]|order(orderRank){
     header,
-    description,
-    sd
+    description
   }`;
   const data = await client.fetch(query);
   console.log(data);
@@ -131,5 +157,6 @@ export async function getQuotes() {
   }`;
 
   const data = await client.fetch(query);
+
   return data as QuoteSchema;
 }

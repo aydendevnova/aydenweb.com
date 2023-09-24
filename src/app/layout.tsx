@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "~/components/layout/header";
 import NoSSR from "react-no-ssr";
+import { env } from "~/env.mjs";
 
 export const metadata = {
   title: "Ayden's Portfolio",
@@ -21,7 +22,9 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export default function RootLayout({
+export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -30,6 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
       <body>
         <Header />
+
         <main className="relative">{children}</main>
       </body>
     </html>

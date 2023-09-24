@@ -9,10 +9,17 @@
   h2 {
     @apply font-montserrat text-[26px] font-normal text-gray;
   }
+  h3 {
+    @apply font-montserrat text-[26px] font-normal text-gray;
+  }
+  h4 {
+    @apply font-montserrat text-[26px] font-normal text-gray;
+  }
   p {
     @apply font-inter text-[16px] font-normal;
   }
-  b {
+  b,
+  strong {
     @apply font-semibold;
   }
   label {

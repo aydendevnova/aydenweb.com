@@ -23,7 +23,7 @@ export default function Header() {
         <div className="relative flex w-full items-center justify-between gap-4">
           <div className="items-center">
             <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-              <span className="flex w-full gap-2 rounded-md bg-light-gray/50 px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-2xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent">
+              <span className="flex w-full gap-2 rounded-md bg-light-gray/50 px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
                 <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span>
               </span>
             </a>
@@ -34,10 +34,10 @@ export default function Header() {
                 href={"/"}
                 className="animate-in fade-in md:slide-in-from-right-10 duration-300"
               >
-                <div className="py-1 pr-2 text-2xl text-black">
+                <div className="py-1 pr-2 text-xl text-black">
                   <BiArrowBack
-                    size={30}
-                    className="transition-colors duration-300 hover:text-accent"
+                    size={26}
+                    className="text-black transition-colors duration-300 hover:text-accent2"
                   />
                 </div>
               </Link>
@@ -70,7 +70,13 @@ function Links({
     <>
       <HeaderLink text="About" link="/about" setMenuOpen={setMenuOpen} />
       <HeaderLink text="Contact" link="/contact" setMenuOpen={setMenuOpen} />
-      <HeaderLink text="Resume" link="/resume" setMenuOpen={setMenuOpen} />
+
+      <HeaderLink
+        text="Resume"
+        link={"/ayden-resume.pdf"}
+        external
+        setMenuOpen={setMenuOpen}
+      />
     </>
   );
 }
@@ -79,15 +85,22 @@ function HeaderLink({
   text,
   link,
   setMenuOpen,
+  external,
 }: {
   text: string;
   link: string;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  external?: boolean;
 }) {
   return (
-    <Link href={link}>
+    <Link
+      href={link}
+      target={external ? "_blank" : ""}
+      passHref
+      rel={external ? "noreferrer noopener" : ""}
+    >
       <div
-        className="flex w-full cursor-pointer gap-2 rounded-full px-2 text-2xl text-black transition-colors hover:text-accent"
+        className="flex w-full cursor-pointer gap-2 rounded-full px-2 text-xl text-black transition-colors hover:text-accent2"
         onClick={() => setMenuOpen(false)}
       >
         {text}

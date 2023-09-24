@@ -2,10 +2,16 @@ import { PortableTextBlock, defineField, defineType } from "sanity";
 
 export type ProjectSchema = {
   name: string;
+  slug: string;
   showcase: boolean;
+  timeline: string;
   tags: string[];
+  role: PortableTextBlock[];
+  techStack: PortableTextBlock[];
+  teamMembers: PortableTextBlock[];
   description: string;
   liveLink: string;
+  content: string;
   image: string;
 };
 
@@ -20,15 +26,44 @@ const projectsSchema = defineType({
       type: "string",
     }),
     defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name", maxLength: 96 },
+    }),
+    defineField({
       name: "showcase",
       title: "Showcase",
       type: "boolean",
+    }),
+    defineField({
+      name: "timeline",
+      title: "Timeline",
+      type: "string",
     }),
     defineField({
       name: "tags",
       title: "Tags",
       type: "array",
       of: [{ type: "string" }],
+    }),
+    defineField({
+      name: "role",
+      title: "Role",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "techStack",
+      title: "Tech Stack",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
+      name: "teamMembers",
+      title: "Team Members",
+      type: "array",
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "description",
@@ -45,6 +80,11 @@ const projectsSchema = defineType({
       title: "Image",
       type: "image",
     }),
+    {
+      name: "content",
+      title: "Content",
+      type: "markdown",
+    },
     defineField({
       name: "orderRank",
       title: "Order Rank",

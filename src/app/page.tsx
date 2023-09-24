@@ -27,6 +27,7 @@ import { RxArrowRight } from "react-icons/rx";
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
 import Hero from "~/components/hero";
+import ProjectCard from "~/components/ui/project-card";
 
 export default async function Home() {
   const hero = await getHero();
@@ -55,17 +56,26 @@ export default async function Home() {
         <div className="h-32"></div>
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-start gap-3 px-8">
-            <h2 className="-ml-4 pb-8 font-semibold">{services.headerText}</h2>
+            <h2 className=" pb-8 font-semibold">{services.headerText}</h2>
             <div className="flex gap-16">
               {services.services.map((service, i) => (
                 <div key={`${service.serviceName}${i}`} className="w-72">
-                  <p className="-ml-4 text-label">
+                  <p className=" text-label">
                     {i < 10 ? "0" : ""}
                     {i + 1}
                   </p>
-                  <hr className="-ml-4" />
-                  <p className="-ml-4 pb-4 font-bold">{service.serviceName}</p>
-                  <PortableText value={service.serviceContent} />
+                  <hr className="" />
+                  <p className=" pb-4 font-bold">{service.serviceName}</p>
+                  <PortableText
+                    value={service.serviceContent}
+                    components={{
+                      list: {
+                        bullet: ({ children }) => (
+                          <ul className="ml-4">{children}</ul>
+                        ),
+                      },
+                    }}
+                  />
                 </div>
               ))}
             </div>
@@ -76,7 +86,7 @@ export default async function Home() {
       <div className="-mt-20 flex w-full justify-center">
         <div className="flex max-w-5xl flex-col gap-12 ">
           {projects.map((project, i) => (
-            <Project project={project} key={`${project.name}${i}`} />
+            <ProjectCard project={project} key={`${project.name}${i}`} />
           ))}
           <Button type="link" href="/projects" className="mx-auto">
             View more projects
@@ -115,53 +125,12 @@ export default async function Home() {
             ))}
           </div>
           <Button type="link" href="/about" className="mt-6">
-            Contact Me
+            Learn more about me
           </Button>
         </div>
       </div>
       <div className="h-60"></div>
       <ContactPage />
     </>
-  );
-}
-
-function Project({ project }: { project: ProjectSchema }) {
-  return (
-    <div className="flex max-w-6xl animate-fade cursor-pointer justify-center transition-transform duration-300 hover:scale-105">
-      <div>
-        <Image
-          src={project.image}
-          width={720}
-          height={720}
-          alt={project.name}
-          className="h-[300px] w-[500px] rounded-l-[60px] object-cover object-center"
-        />
-      </div>
-      <div className="flex w-full flex-col justify-center rounded-r-[60px] bg-white shadow-lg">
-        <div className="mx-8 flex max-w-xl flex-col gap-2">
-          <h2 className="font-semibold">{project.name}</h2>
-          <div className="-mt-1 flex gap-16">
-            <label className="text-label">
-              {project.tags.map((tag: string, i) => (
-                <span key={`${tag}${i}`}>
-                  {tag} {i < project.tags.length - 1 ? "• " : ""}
-                </span>
-              ))}
-            </label>
-          </div>
-          {/* <PortableText value={project.description} /> */}
-          <p>{project.description}</p>
-          <Link
-            href={project.liveLink}
-            className="flex cursor-pointer gap-4 hover:underline"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <span className="font-semibold">{project.liveLink}</span>
-            <RxArrowRight size={24} />
-          </Link>
-        </div>
-      </div>
-    </div>
   );
 }

@@ -44,7 +44,7 @@ export default async function About() {
               {quotes.quotes.map((quote, i) => (
                 <div
                   key={`${quote.quoterTitle}${i}`}
-                  className="flex flex-col gap-2 rounded-xl bg-slate-100 p-3 shadow-lg"
+                  className="flex flex-col gap-2 rounded-xl bg-light-gray p-3 shadow-lg"
                 >
                   <i>{quote.content}</i>
                   <div className="flex flex-row items-center gap-4">
