@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import { PortableTextBlock } from "sanity";
+import { type PortableTextBlock } from "sanity";
 
 export default function PortableTextWithImageLink({
   value,

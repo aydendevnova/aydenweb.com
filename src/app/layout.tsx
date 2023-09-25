@@ -1,7 +1,6 @@
 import "~/styles/globals.css";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "~/components/layout/header";
-import NoSSR from "react-no-ssr";
 import { env } from "~/env.mjs";
 
 export const metadata = {
@@ -24,7 +23,7 @@ const montserrat = Montserrat({
 
 export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;

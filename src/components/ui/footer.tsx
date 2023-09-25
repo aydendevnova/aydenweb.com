@@ -1,23 +1,7 @@
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { useId } from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { ContactSchema } from "~/sanity/schemas/contact-schema";
-
-const Socials = [
-  {
-    icon: FaLinkedin,
-    link: "https://www.linkedin.com/in/ayden-springer-03a61824a/",
-  },
-  {
-    icon: FaGithub,
-    link: "https://github.com/WraithWinterly",
-  },
-  {
-    icon: FaTwitter,
-    link: "https://twitter.com/WraithWinterly",
-  },
-];
+import { type ContactSchema } from "~/sanity/schemas/contact-schema";
 
 export default function Footer({ contact }: { contact: ContactSchema }) {
   const id = useId();

@@ -4,9 +4,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import Button from "~/components/ui/styled/Button";
 import ContactPage from "~/components/contact-page";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { type ReactNode } from "react";
 import { PortableText } from "@portabletext/react";
-import { env } from "~/env.mjs";
 
 export default async function ProjectPage({
   params,

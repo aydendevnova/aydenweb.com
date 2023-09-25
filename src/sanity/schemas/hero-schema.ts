@@ -1,9 +1,4 @@
-import {
-  PortableTextBlock,
-  defineArrayMember,
-  defineField,
-  defineType,
-} from "sanity";
+import { type PortableTextBlock, defineField, defineType } from "sanity";
 
 export type HeroSchema = {
   pathname: string;

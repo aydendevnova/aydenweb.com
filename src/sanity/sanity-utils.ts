@@ -1,14 +1,14 @@
 import { createClient } from "next-sanity";
 import { groq } from "next-sanity";
-import { HeroSchema } from "./schemas/hero-schema";
 import { env } from "~/env.mjs";
-import { ServicesSchema } from "./schemas/services-schema";
-import { ProjectSchema } from "./schemas/projects-schema";
-import { PhotosSchema } from "./schemas/photos-schema";
-import { SkillSchema } from "./schemas/skills-schema";
-import { ContactSchema } from "./schemas/contact-schema";
-import { AboutSchema } from "./schemas/about-schema";
-import { QuoteSchema } from "./schemas/quote-schema";
+import { type HeroSchema } from "./schemas/hero-schema";
+import { type ServicesSchema } from "./schemas/services-schema";
+import { type ProjectSchema } from "./schemas/projects-schema";
+import { type PhotosSchema } from "./schemas/photos-schema";
+import { type SkillSchema } from "./schemas/skills-schema";
+import { type ContactSchema } from "./schemas/contact-schema";
+import { type AboutSchema } from "./schemas/about-schema";
+import { type QuoteSchema } from "./schemas/quote-schema";
 
 const client = createClient({
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,

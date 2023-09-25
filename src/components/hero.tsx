@@ -1,7 +1,6 @@
 import { PortableText } from "@portabletext/react";
-import { HeroSchema } from "~/sanity/schemas/hero-schema";
-import Button from "./ui/styled/Button";
-import { ReactNode } from "react";
+import { type HeroSchema } from "~/sanity/schemas/hero-schema";
+import { type ReactNode } from "react";
 
 export default function Hero({
   hero,

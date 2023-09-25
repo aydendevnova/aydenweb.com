@@ -2,8 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { RxArrowRight } from "react-icons/rx";
-import { ProjectSchema } from "~/sanity/schemas/projects-schema";
+import { type ProjectSchema } from "~/sanity/schemas/projects-schema";
 
 export default function ProjectCard({ project }: { project: ProjectSchema }) {
   const router = useRouter();

@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction, type ReactNode } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { IoClose } from "react-icons/io5";
-import { ReactNode } from "react";
 
 interface ModalProps {
   children: ReactNode;

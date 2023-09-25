@@ -1,4 +1,4 @@
-import { PortableTextBlock, defineField, defineType } from "sanity";
+import { type PortableTextBlock, defineField, defineType } from "sanity";
 
 export type ProjectSchema = {
   name: string;
