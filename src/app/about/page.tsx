@@ -19,7 +19,7 @@ export default async function About() {
           <Hero hero={hero.filter((hero) => hero.pathname === "/about")[0]}>
             <Button
               type="link"
-              href="/resume.pdf"
+              href="/ayden-resume.pdf"
               className="mx-auto mt-6 md:mx-0"
             >
               View resume
