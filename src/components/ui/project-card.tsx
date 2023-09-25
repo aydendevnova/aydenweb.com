@@ -36,16 +36,18 @@ export default function ProjectCard({ project }: { project: ProjectSchema }) {
             </div>
             {/* <PortableText value={project.description} /> */}
             <p>{project.description}</p>
-            <Link
-              href={liveLinkHref}
-              passHref
-              className="flex cursor-pointer gap-4 hover:underline"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <span className="font-semibold">{project.liveLink}</span>
-              {/* <RxArrowRight size={24} /> */}
-            </Link>
+            {!!liveLinkHref && (
+              <Link
+                href={liveLinkHref}
+                passHref
+                className="flex cursor-pointer gap-4 hover:underline"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <span className="font-semibold">{project.liveLink}</span>
+                {/* <RxArrowRight size={24} /> */}
+              </Link>
+            )}
           </div>
         </div>
       </div>

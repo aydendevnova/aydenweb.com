@@ -1,17 +1,8 @@
 import { SchemaType, defineConfig } from "sanity";
-import {
-  DocumentListItemBuilder,
-  ListItemBuilder,
-  deskTool,
-} from "sanity/desk";
+import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
-import schemas from "~/sanity/schemas";
-import { env } from "~/env.mjs";
-import {
-  orderRankField,
-  orderRankOrdering,
-  orderableDocumentListDeskItem,
-} from "@sanity/orderable-document-list";
+import schemas from "./src/sanity/schemas";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { markdownSchema } from "sanity-plugin-markdown";
 
 const ORDERABLE_TYPES = ["projects", "about", "photos"];
@@ -19,8 +10,7 @@ const ORDERABLE_TYPES = ["projects", "about", "photos"];
 export default defineConfig({
   name: "default",
   title: "aydens-net-v2",
-
-  projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  projectId: "3g4csmfm",
   dataset: "production",
   basePath: "/admin",
 

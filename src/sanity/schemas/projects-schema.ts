@@ -10,7 +10,7 @@ export type ProjectSchema = {
   techStack: PortableTextBlock[];
   teamMembers: PortableTextBlock[];
   description: string;
-  liveLink: string;
+  liveLink: string | undefined;
   content: string;
   image: string;
 };

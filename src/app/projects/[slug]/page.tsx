@@ -31,9 +31,11 @@ export default async function ProjectPage({
               <div className="mb-28 flex flex-col items-center gap-2 pt-32 text-center">
                 <h1>{project.name}</h1>
                 <p className="max-w-xl">{project.description}</p>
-                <Button type="link" href={project.liveLink} className="mt-4">
-                  View live site
-                </Button>
+                {!!project?.liveLink && (
+                  <Button type="link" href={project.liveLink} className="mt-4">
+                    View live site
+                  </Button>
+                )}
               </div>
               <div className="md:px-4 lg:px-0">
                 <div className="flex flex-col items-center justify-between md:flex-row">
