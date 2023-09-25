@@ -12,7 +12,7 @@ export default async function ContactPage() {
         style={{ backgroundImage: `url(${blueWave2.src})` }}
         className="pointer-events-none absolute -top-80 right-0 h-full w-[1000px] bg-cover bg-right bg-no-repeat"
       ></div>
-      <div className="relative flex flex-col justify-between bg-accent2 pb-2">
+      <div className="relative flex flex-col justify-between bg-accent2 px-6 pb-2">
         <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-center bg-no-repeat object-cover py-20">
           <Image
             src={worldDot.src}
@@ -72,7 +72,7 @@ export default async function ContactPage() {
                 />
               </div>
 
-              <Button className="">Send message</Button>
+              <Button className="mx-auto md:mx-0">Send message</Button>
             </form>
           </div>
         </div>

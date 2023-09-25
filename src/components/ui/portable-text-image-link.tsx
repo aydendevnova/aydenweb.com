@@ -13,7 +13,6 @@ export default function PortableTextWithImageLink({
       components={{
         marks: {
           link: ({ text, value }) => {
-            console.log(value);
             if (
               (value?.href as string).includes(".png") ||
               (value?.href as string).includes(".jpg") ||
@@ -25,7 +24,7 @@ export default function PortableTextWithImageLink({
                   height={800}
                   src={value.href}
                   alt={text}
-                  className="my-8 h-96 w-full rounded-xl object-cover shadow-lg"
+                  className="my-8 h-60 w-full rounded-xl object-cover shadow-lg md:h-96"
                 />
               );
             }
@@ -34,13 +33,21 @@ export default function PortableTextWithImageLink({
                 href={value.href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="text-blue-500 hover:underline"
+                className="break-all text-blue-500 hover:underline"
               >
                 {text}
               </a>
             );
           },
+          h2: ({ children }) => (
+            <h2 className="w-[200px] font-semibold">{children}</h2>
+          ),
         },
+        block: ({ children }) => (
+          <p className="inline-block whitespace-break-spaces break-words">
+            {children}
+          </p>
+        ),
       }}
     ></PortableText>
   );

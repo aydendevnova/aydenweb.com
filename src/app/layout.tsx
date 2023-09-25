@@ -31,10 +31,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
-      <body>
-        <Header />
-
+      <body className="">
         <main className="relative">{children}</main>
+        <Header />
       </body>
     </html>
   );

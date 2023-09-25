@@ -41,25 +41,28 @@ export default async function Home() {
       <div className="bg-light-gray">
         <div className="relative flex min-h-screen flex-col justify-center">
           <div
-            className="absolute right-0 top-28 h-full w-full bg-contain bg-right-bottom bg-no-repeat opacity-40"
+            className="absolute right-0 top-0 h-full w-full bg-contain bg-right-bottom bg-no-repeat opacity-40 md:top-28"
             style={{
               backgroundImage: `url(${blueWave.src})`,
               filter: "saturate(70%)",
             }}
           ></div>
           <Hero hero={hero.filter((hero) => hero.pathname === "/").at(0)}>
-            <Button type="link" href="/about" className="mt-6">
+            <Button type="link" href="/about" className="mx-auto mt-6 md:mx-0">
               Get in touch
             </Button>
           </Hero>
         </div>
-        <div className="h-32"></div>
+        <div className="md:h-32"></div>
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-start gap-3 px-8">
-            <h2 className=" pb-8 font-semibold">{services.headerText}</h2>
-            <div className="flex gap-16">
+            <h2 className="pb-8 font-semibold">{services.headerText}</h2>
+            <div className="flex flex-col flex-wrap gap-16 lg:flex-row">
               {services.services.map((service, i) => (
-                <div key={`${service.serviceName}${i}`} className="w-72">
+                <div
+                  key={`${service.serviceName}${i}`}
+                  className="max-w-96 w-full lg:w-72"
+                >
                   <p className=" text-label">
                     {i < 10 ? "0" : ""}
                     {i + 1}
@@ -84,7 +87,7 @@ export default async function Home() {
         <div className="h-60"></div>
       </div>
       <div className="-mt-20 flex w-full justify-center">
-        <div className="flex max-w-5xl flex-col gap-12 ">
+        <div className="flex max-w-5xl flex-col gap-12 px-6">
           {projects.map((project, i) => (
             <ProjectCard project={project} key={`${project.name}${i}`} />
           ))}
@@ -99,13 +102,13 @@ export default async function Home() {
         width={720}
         height={720}
         alt="wave"
-        className="mx-auto my-8 h-96 w-full max-w-4xl rounded-xl object-cover shadow-lg"
+        className="mx-auto my-8 h-96 w-full max-w-4xl rounded-none object-cover shadow-lg md:rounded-xl"
       />
       <div className="h-48"></div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl flex-col items-start gap-3 px-8">
           <h2 className="pb-8 font-semibold">{skills.headerText}</h2>
-          <div className="grid w-full grid-cols-6 justify-between">
+          <div className="grid w-full grid-cols-3 justify-between md:grid-cols-6">
             {skills.skills.map((skill, i) => (
               <div
                 key={`${skill.title}${i}`}
@@ -124,7 +127,7 @@ export default async function Home() {
               </div>
             ))}
           </div>
-          <Button type="link" href="/about" className="mt-6">
+          <Button type="link" href="/about" className="mx-auto mt-6 md:mx-0">
             Learn more about me
           </Button>
         </div>

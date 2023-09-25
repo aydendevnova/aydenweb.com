@@ -25,7 +25,7 @@ export default function Footer({ contact }: { contact: ContactSchema }) {
   return (
     <footer className="text-gray-300 relative w-full text-white">
       <div className="bg-bgPurple flex justify-center bg-opacity-70 p-7">
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 text-center">
           <PortableText
             value={contact.footerText}
             components={{
@@ -53,18 +53,16 @@ export default function Footer({ contact }: { contact: ContactSchema }) {
           </div>
 
           <div className="flex flex-col items-center gap-4 md:flex-row">
-            <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
+            <a
+              href={`https://${process.env.NEXT_PUBLIC_URL}`}
+              className="md:w-44 md:text-end"
+            >
               <span className="">{process.env.NEXT_PUBLIC_URL}</span>
             </a>
-            <p className="hidden md:inline-block">&bull;</p>
-            <p>&copy;2022-{new Date().getFullYear()}</p>
-            <p className="hidden md:inline-block">&bull;</p>
-            <a
-              href="https://github.com/WraithWinterly/aydens.net"
-              className="hover:text-accent"
-            >
-              View Source
-            </a>
+            <p className="hidden text-center md:inline-block">&bull;</p>
+            <p className="md:w-44 md:text-start">
+              &copy;2022-{new Date().getFullYear()}
+            </p>
           </div>
         </div>
       </div>

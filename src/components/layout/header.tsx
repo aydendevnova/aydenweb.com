@@ -14,12 +14,7 @@ export default function Header() {
 
   return pathname.includes("/admin") ? null : (
     <Mounted>
-      <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Menu">
-        <div className="mx-auto flex w-48 flex-col gap-4 bg-light-gray/50 backdrop-blur-md">
-          <Links setMenuOpen={setMenuOpen} />
-        </div>
-      </Modal>
-      <header className="fixed z-20 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
+      <header className="fixed top-0 z-10 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
         <div className="relative flex w-full items-center justify-between gap-4">
           <div className="items-center">
             <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
@@ -43,7 +38,7 @@ export default function Header() {
               </Link>
             )}
 
-            <div className="hidden shrink-0 items-center gap-6  py-1 md:flex">
+            <div className="hidden shrink-0 items-center gap-6 py-1 md:flex">
               <Links setMenuOpen={setMenuOpen} />
             </div>
             <div className="flex md:hidden">
@@ -57,6 +52,11 @@ export default function Header() {
           </div>
         </div>
       </header>
+      <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Navigate">
+        <div className="mx-auto flex w-64 flex-col gap-4 bg-light-gray backdrop-blur-md">
+          <Links setMenuOpen={setMenuOpen} />
+        </div>
+      </Modal>
     </Mounted>
   );
 }
@@ -103,7 +103,7 @@ function HeaderLink({
         className="flex w-full cursor-pointer gap-2 rounded-full px-2 text-xl text-black transition-colors hover:text-accent2"
         onClick={() => setMenuOpen(false)}
       >
-        {text}
+        <p className="text-xl">{text}</p>
       </div>
     </Link>
   );

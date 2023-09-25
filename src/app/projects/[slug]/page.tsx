@@ -36,33 +36,39 @@ export default async function ProjectPage({
                   View live site
                 </Button>
               </div>
-              <div className="flex items-center justify-between">
-                <p>{project.timeline}</p>
-                <p>
-                  {project.tags.map(
-                    (tag, i) =>
-                      `${tag} ${i < project.tags.length - 1 ? "• " : ""}`,
-                  )}
-                </p>
-              </div>
-              <hr className="mb-6 w-full" />
-              <h2 className="mb-4">
-                <b>About</b>
-              </h2>
-              <div className="flex flex-row justify-between">
-                <div className="flex flex-col gap-2">
-                  <div>
-                    <b>Role</b>
-                    <PortableText value={project.role} />
-                  </div>
-                  <div>
-                    <b>Team Members</b>
-                    <PortableText value={project.teamMembers} />
-                  </div>
+              <div className="md:px-4 lg:px-0">
+                <div className="flex flex-col items-center justify-between md:flex-row">
+                  <p>{project.timeline}</p>
+                  <i>
+                    {project.tags.map(
+                      (tag, i) =>
+                        `${tag} ${i < project.tags.length - 1 ? "• " : ""}`,
+                    )}
+                  </i>
                 </div>
-                <div>
-                  <b>Tech Stack</b>
-                  <PortableText value={project.techStack} />
+                <hr className="mb-6 w-full" />
+              </div>
+
+              {/* About Section */}
+              <div className="px-8 md:px-4">
+                <h2 className="mb-4">
+                  <b>About</b>
+                </h2>
+                <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-0">
+                  <div className="flex flex-col gap-8 md:gap-2">
+                    <div>
+                      <b>Role</b>
+                      <PortableText value={project.role} />
+                    </div>
+                    <div>
+                      <b>Team Members</b>
+                      <PortableText value={project.teamMembers} />
+                    </div>
+                  </div>
+                  <div>
+                    <b>Tech Stack</b>
+                    <PortableText value={project.techStack} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,9 +77,13 @@ export default async function ProjectPage({
                 source={project.content}
                 components={{
                   h2: ({ children }) => (
-                    <h2 className="mt-12 font-semibold">{children}</h2>
+                    <h2 className="mt-12 px-8 font-semibold md:px-4">
+                      {children}
+                    </h2>
                   ),
-                  p: ({ children }) => <p className="mt-2">{children}</p>,
+                  p: ({ children }) => (
+                    <p className="mt-2 px-8 md:px-4">{children}</p>
+                  ),
                   strong: ({ children }) => (
                     <strong className="font-semibold">{children}</strong>
                   ),
@@ -112,7 +122,7 @@ function WidthContainer({ children }: { children: ReactNode }) {
 
 function BoxHighlight({ children }: { children: ReactNode }) {
   return (
-    <div className="mt-12 gap-2 rounded-xl bg-light-gray px-6 py-8 text-start shadow-lg">
+    <div className="mt-12 gap-2 bg-light-gray py-8 text-start shadow-lg md:rounded-xl md:px-6">
       <div className="-mt-12">{children}</div>
     </div>
   );
@@ -127,10 +137,10 @@ function BoxInImage({
 }) {
   return (
     <div
-      className="relative my-12 flex h-[600px] w-screen flex-col items-center gap-4 bg-cover bg-center"
+      className="relative my-12 flex h-[600px] flex-col items-center gap-4 bg-cover bg-center lg:w-screen"
       style={{ backgroundImage: `url(${imgURL})` }}
     >
-      <div className="absolute bottom-0 right-10 top-0 max-w-[600px] p-4">
+      <div className="absolute bottom-0 right-0 top-0 max-w-[600px] p-4 md:right-10">
         <div className="flex h-full flex-col items-center justify-center align-middle">
           <div className="h-fit rounded-xl bg-white/80 p-8 pt-16 backdrop-blur-md">
             <div className="-mt-12">{children}</div>
