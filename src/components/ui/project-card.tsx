@@ -32,9 +32,9 @@ export default function ProjectCard({ project }: { project: ProjectSchema }) {
               ))}
             </label>
           </div>
-          {/* <PortableText value={project.description} /> */}
+
           <p>{project.description}</p>
-          <div className="flex flex-row gap-2 pt-4">
+          <div className="flex flex-col gap-4 pt-4 md:flex-row">
             <Button type="link" href={linkHref} styleType="normal2">
               View case study
             </Button>

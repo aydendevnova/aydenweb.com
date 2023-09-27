@@ -14,8 +14,16 @@ html {
     @apply font-montserrat text-[24px] font-normal text-gray md:text-[26px];
   }
 
-  p {
+  p,
+  li {
     @apply font-inter text-[16px] font-normal;
+  }
+  li {
+    @apply pt-1;
+  }
+  ol,
+  ul {
+    @apply ml-8 list-decimal;
   }
   b,
   strong {
@@ -27,9 +35,6 @@ html {
   ol,
   ul {
     @apply list-outside list-disc;
-  }
-  li {
-    @apply py-1 text-[18px];
   }
   hr {
     @apply my-2 border border-gray-200;

@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "~/components/layout/header";
 import { env } from "~/env.mjs";
+import Script from "next/script";
 
 export const metadata = {
   title: "Ayden's Portfolio",
@@ -30,6 +31,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-46XMST9KKY"
+      />
       <body className="">
         <main className="relative">{children}</main>
         <Header />

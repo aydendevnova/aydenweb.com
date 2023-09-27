@@ -97,8 +97,8 @@ export default async function ProjectPage({
                   BoxInImage: ({ imgURL, children }) => (
                     <BoxInImage imgURL={imgURL}>{children}</BoxInImage>
                   ),
-                  ol: ({ children }) => <ol className="pt-1">{children}</ol>,
-                  li: ({ children }) => <li className="ml-4">{children}</li>,
+                  ol: ({ children }) => <ol>{children}</ol>,
+                  li: ({ children }) => <li>{children}</li>,
                 }}
               />
             </div>
