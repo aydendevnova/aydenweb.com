@@ -1,9 +1,17 @@
+import { type Metadata } from "next";
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
 import Hero from "~/components/hero";
 import PortableTextWithImageLink from "~/components/ui/portable-text-image-link";
 import Button from "~/components/ui/styled/Button";
 import { getAbout, getHero, getQuotes } from "~/sanity/sanity-utils";
+
+export const metadata: Metadata = {
+  title: "About Ayden: Your Developer",
+  description:
+    "Learn about me. Choose concrete results instead of promises with Ayden's Full Stack expertise. Unlock your project's potential with just one click",
+  icons: ["/favicon.ico"],
+};
 
 export default async function About() {
   const [hero, about, quotes] = await Promise.all([
