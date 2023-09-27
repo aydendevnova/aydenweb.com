@@ -1,13 +1,9 @@
+"use client";
 import "~/styles/globals.css";
+import "aos/dist/aos.css";
 import { Inter, Montserrat } from "next/font/google";
 import Header from "~/components/layout/header";
-import { env } from "~/env.mjs";
 import Script from "next/script";
-
-export const metadata = {
-  title: "Ayden's Portfolio",
-  description: "Portfolio Website",
-};
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -22,20 +18,30 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
+import AOS from "aos";
+
+import { useEffect } from "react";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      // disable: 'phone',
+      duration: 400,
+      easing: "ease-out-sine",
+    });
+  }, []);
   return (
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
       <Script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-46XMST9KKY"
       />
-      <body className="">
+      <body>
         <main className="relative">{children}</main>
         <Header />
       </body>

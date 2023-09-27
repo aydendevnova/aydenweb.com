@@ -23,7 +23,7 @@ export default function Button({
 }) {
   function getStyle() {
     if (styleType === "normal") {
-      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full bg-accent px-12 py-4 transition-transform duration-200 hover:scale-105 ${className}`;
+      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full bg-accent px-12 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${className}`;
     } else if (styleType === "normal2") {
       return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl bg-light-gray px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${className}`;
     }

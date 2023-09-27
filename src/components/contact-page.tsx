@@ -23,8 +23,12 @@ export default async function ContactPage() {
             height={worldDot.height / 1.2}
             className="pointer-events-none absolute pt-48 opacity-50"
             alt=""
+            data-aos="zoom-in"
           />
-          <div className="z-10 flex w-full max-w-2xl flex-col">
+          <div
+            className="z-10 flex w-full max-w-2xl flex-col"
+            data-aos="fade-up"
+          >
             <h2 className="font-semibold text-white">
               {contact.contactHeader}
             </h2>
@@ -32,7 +36,7 @@ export default async function ContactPage() {
             <form
               action="https://usebasin.com/f/5785003bca73"
               method="POST"
-              className="text-gray-400 flex w-full flex-col gap-8 text-xl"
+              className="text-gray-400 flex w-full flex-col gap-8"
             >
               <div className="flex flex-col gap-1">
                 <label htmlFor="name" className="text-slate-200">

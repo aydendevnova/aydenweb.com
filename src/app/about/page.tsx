@@ -25,14 +25,16 @@ export default async function About() {
       <div className="bg-light-gray">
         <div className="relative flex h-full min-h-screen flex-col justify-center">
           <Hero hero={hero.filter((hero) => hero.pathname === "/about")[0]}>
-            <Button
-              type="link"
-              href="/ayden-resume.pdf"
-              className="mx-auto mt-6 md:mx-0"
-              external
-            >
-              View resume
-            </Button>
+            <div data-aos="fade-up">
+              <Button
+                type="link"
+                href="/ayden-resume.pdf"
+                className="mx-auto mt-6 md:mx-0"
+                external
+              >
+                View resume
+              </Button>
+            </div>
           </Hero>
         </div>
       </div>
@@ -40,7 +42,11 @@ export default async function About() {
         <div className="flex max-w-4xl flex-col gap-24">
           <div className="px-6">
             {!!about && about[0] && (
-              <div key={`${about[0].header}`} className="font-semibold">
+              <div
+                key={`${about[0].header}`}
+                className="font-semibold"
+                data-aos="fade-up"
+              >
                 <h2 className="mb-4 font-semibold">{about[0].header}</h2>
                 <div className="">
                   <PortableTextWithImageLink value={about[0].description} />
@@ -50,13 +56,16 @@ export default async function About() {
           </div>
 
           <div className="px-6">
-            <h2 className="pb-4 font-semibold">{quotes.header}</h2>
+            <h2 className="pb-4 font-semibold" data-aos="fade-up">
+              {quotes.header}
+            </h2>
 
             <div className="flex flex-col gap-12">
               {quotes.quotes.map((quote, i) => (
                 <div
                   key={`${quote.quoterTitle}${i}`}
                   className="flex flex-col gap-2 rounded-xl bg-light-gray p-6 shadow-lg"
+                  data-aos="fade-up"
                 >
                   <i>{quote.content}</i>
                   <div className="flex flex-row items-center gap-4 pt-4">
@@ -85,7 +94,11 @@ export default async function About() {
             {about
               .filter((about, i) => i != 0)
               .map((about, i) => (
-                <div key={`${about.header}${i}`} className="font-semibold">
+                <div
+                  key={`${about.header}${i}`}
+                  className="font-semibold"
+                  data-aos="fade-up"
+                >
                   <h2 className="mb-4 font-semibold">{about.header}</h2>
                   <PortableTextWithImageLink value={about.description} />
                 </div>

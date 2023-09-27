@@ -8,7 +8,7 @@ export default async function Projects() {
     <>
       <div className="flex flex-col items-center px-6 pb-52 pt-32">
         <h1 className="mb-8 font-semibold">More Projects</h1>
-        <div className="flex max-w-5xl flex-col gap-12 ">
+        <div className="flex max-w-5xl flex-col gap-12 " data-aos="fade-up">
           {projects
             .filter((p) => !p.showcase)
             .map((project, i) => (

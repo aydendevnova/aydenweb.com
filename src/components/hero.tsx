@@ -18,8 +18,9 @@ export default function Hero({
           filter: "saturate(80%)",
         }}
       ></div>
-      <div className="relative z-10 flex h-full min-h-screen max-w-5xl flex-col justify-center gap-3 px-4 py-16 pb-52 md:pb-24 md:pl-16 lg:pl-36">
+      <div className="relative z-10 flex h-full min-h-screen max-w-5xl animate-fade flex-col justify-center gap-3 px-4 py-16 pb-52 md:pb-24 md:pl-16 lg:pl-36">
         <h2 className="hidden md:block">{hero.topText}</h2>
+
         <PortableText
           value={hero.header}
           components={{

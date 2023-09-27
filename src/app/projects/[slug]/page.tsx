@@ -16,19 +16,23 @@ export default async function ProjectPage({
 
   return (
     <>
-      <div className="flex flex-col items-center pb-32">
+      <div className="relative flex flex-col items-center pb-32">
         {!project && <div>404 Project not found</div>}
         {!!project && (
-          <div className="flex flex-col items-center">
+          <div className=" flex flex-col items-center">
             <Image
               src={project.image}
               width={720}
               height={720}
               alt="project banner"
               className="h-[500px] w-screen object-cover object-center"
+              data-aos="fade-down"
             />
             <div className="w-full max-w-4xl">
-              <div className="mb-28 flex flex-col items-center gap-2 pt-32 text-center">
+              <div
+                className="mb-28 flex flex-col items-center gap-2 pt-32 text-center"
+                data-aos="fade-up"
+              >
                 <h1>{project.name}</h1>
                 <p className="max-w-xl">{project.description}</p>
                 {!!project?.liveLink && (
@@ -37,7 +41,7 @@ export default async function ProjectPage({
                   </Button>
                 )}
               </div>
-              <div className="md:px-4 lg:px-0">
+              <div className="md:px-4 lg:px-0" data-aos="fade-up">
                 <div className="flex flex-col items-center justify-between md:flex-row">
                   <p>{project.timeline}</p>
                   <i>
@@ -51,7 +55,7 @@ export default async function ProjectPage({
               </div>
 
               {/* About Section */}
-              <div className="px-8 md:px-4">
+              <div className="px-8 md:px-4" data-aos="fade-up">
                 <h2 className="mb-4">
                   <b>About</b>
                 </h2>
@@ -73,7 +77,7 @@ export default async function ProjectPage({
                 </div>
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col" data-aos="fade-up">
               <MDXRemote
                 source={project.content}
                 components={{
@@ -124,7 +128,9 @@ function WidthContainer({ children }: { children: ReactNode }) {
 function BoxHighlight({ children }: { children: ReactNode }) {
   return (
     <div className="mt-12 gap-2 bg-light-gray py-8 text-start shadow-lg md:rounded-xl md:px-6">
-      <div className="-mt-16">{children}</div>
+      <div className="mx-auto max-w-4xl">
+        <div className="-mt-16">{children}</div>
+      </div>
     </div>
   );
 }
