@@ -44,9 +44,7 @@ export default function PortableTextWithImageLink({
           ),
         },
         block: ({ children }) => (
-          <p className="inline-block whitespace-break-spaces break-words">
-            {children}
-          </p>
+          <p className="whitespace-break-spaces break-words">{children}</p>
         ),
       }}
     ></PortableText>

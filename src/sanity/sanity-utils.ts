@@ -47,16 +47,17 @@ export async function getProjects(options: { showcaseOnly: boolean }) {
     query = groq`*[_type == "projects" && showcase == true]|order(orderRank){
       name,
       tags,
+      showcase,
       description,
       liveLink,
       "slug": slug.current,
-      "image": image.asset->url,
-      asdf
+      "image": image.asset->url
     }`;
   } else {
     query = groq`*[_type == "projects"]|order(orderRank){
       name,
       tags,
+      showcase,
       description,
       liveLink,
       "slug": slug.current,

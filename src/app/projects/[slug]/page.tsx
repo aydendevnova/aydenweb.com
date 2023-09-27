@@ -27,7 +27,7 @@ export default async function ProjectPage({
               alt="project banner"
               className="h-[500px] w-screen object-cover object-center"
             />
-            <div className="w-full max-w-3xl">
+            <div className="w-full max-w-4xl">
               <div className="mb-28 flex flex-col items-center gap-2 pt-32 text-center">
                 <h1>{project.name}</h1>
                 <p className="max-w-xl">{project.description}</p>
@@ -78,7 +78,7 @@ export default async function ProjectPage({
                 source={project.content}
                 components={{
                   h2: ({ children }) => (
-                    <h2 className="mt-12 px-8 font-semibold md:px-4">
+                    <h2 className="mt-16 px-8 font-semibold md:px-4">
                       {children}
                     </h2>
                   ),
@@ -118,13 +118,13 @@ export default async function ProjectPage({
 }
 
 function WidthContainer({ children }: { children: ReactNode }) {
-  return <div className="mx-auto max-w-3xl">{children}</div>;
+  return <div className="mx-auto max-w-4xl">{children}</div>;
 }
 
 function BoxHighlight({ children }: { children: ReactNode }) {
   return (
     <div className="mt-12 gap-2 bg-light-gray py-8 text-start shadow-lg md:rounded-xl md:px-6">
-      <div className="-mt-12">{children}</div>
+      <div className="-mt-16">{children}</div>
     </div>
   );
 }
@@ -138,13 +138,13 @@ function BoxInImage({
 }) {
   return (
     <div
-      className="relative my-12 flex h-[600px] flex-col items-center gap-4 bg-cover bg-center lg:w-screen"
+      className="relative mb-16 mt-28 flex h-[600px] flex-col items-center gap-4 bg-cover bg-center lg:w-screen"
       style={{ backgroundImage: `url(${imgURL})` }}
     >
       <div className="absolute bottom-0 right-0 top-0 max-w-[600px] p-4 md:right-10">
         <div className="flex h-full flex-col items-center justify-center align-middle">
           <div className="h-fit rounded-xl bg-white/80 p-8 pt-16 backdrop-blur-md">
-            <div className="-mt-12">{children}</div>
+            <div className="-mt-16">{children}</div>
           </div>
         </div>
       </div>

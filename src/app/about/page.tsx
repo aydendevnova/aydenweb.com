@@ -21,14 +21,15 @@ export default async function About() {
               type="link"
               href="/ayden-resume.pdf"
               className="mx-auto mt-6 md:mx-0"
+              external
             >
               View resume
             </Button>
           </Hero>
         </div>
       </div>
-      <div className="mt-24 flex flex-col items-center">
-        <div className="flex max-w-3xl flex-col gap-12">
+      <div className="mt-40 flex flex-col items-center">
+        <div className="flex max-w-4xl flex-col gap-24">
           <div className="px-6">
             {!!about && about[0] && (
               <div key={`${about[0].header}`} className="font-semibold">
@@ -47,7 +48,7 @@ export default async function About() {
               {quotes.quotes.map((quote, i) => (
                 <div
                   key={`${quote.quoterTitle}${i}`}
-                  className="flex flex-col gap-2 rounded-xl bg-light-gray p-3 shadow-lg"
+                  className="flex flex-col gap-2 rounded-xl bg-light-gray p-6 shadow-lg"
                 >
                   <i>{quote.content}</i>
                   <div className="flex flex-row items-center gap-4 pt-4">
@@ -72,7 +73,7 @@ export default async function About() {
             </div>
           </div>
 
-          <div className="project-details flex max-w-3xl flex-col gap-6 px-6">
+          <div className="project-details flex max-w-4xl flex-col gap-12 px-6">
             {about
               .filter((about, i) => i != 0)
               .map((about, i) => (
