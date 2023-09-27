@@ -82,8 +82,8 @@ export default async function Home() {
       <div className="-mt-20 flex w-full justify-center">
         <div className="flex max-w-5xl flex-col gap-12 px-6">
           {projects.map((project, i) => (
-            <div data-aos="fade-up">
-              <ProjectCard project={project} key={`${project.name}${i}`} />
+            <div data-aos="fade-up" key={`${project.name}${i}`}>
+              <ProjectCard project={project} />
             </div>
           ))}
           <div data-aos="fade-up">
