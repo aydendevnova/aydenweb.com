@@ -26,20 +26,31 @@ export const metadata: Metadata = {
 export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
 export default async function Home() {
-  const hero = await getHero();
-  const services = await getServices();
-  const projects = await getProjects({ showcaseOnly: true });
-
-  const skills = await getSkills();
+  const [hero, services, projects, skills] = await Promise.all([
+    getHero(),
+    getServices(),
+    getProjects({ showcaseOnly: true }),
+    getSkills(),
+  ]);
 
   return (
     <>
       <div className="bg-light-gray">
         <div className="relative flex min-h-screen animate-fade flex-col justify-center">
           <Hero hero={hero.filter((hero) => hero.pathname === "/").at(0)}>
-            <Button type="link" href="/about" className="mt-8">
-              Get in touch
-            </Button>
+            <div className="flex gap-4">
+              <Button type="link" href="/about" className="mt-8">
+                Get in touch
+              </Button>
+              <Button
+                type="link"
+                href="/ayden-resume.pdf"
+                external
+                className="mt-8 bg-gray-200"
+              >
+                View Resume
+              </Button>
+            </div>
           </Hero>
         </div>
         <div className="md:h-36"></div>
@@ -77,29 +88,34 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="h-60"></div>
+        <div className="h-72"></div>
       </div>
-      <div className="-mt-20 flex w-full justify-center">
-        <div className="flex max-w-5xl flex-col gap-12 px-6">
+
+      <div
+        className="-mt-48 flex w-full flex-col items-center justify-center"
+        data-aos="fade-up"
+      >
+        <h1 className="mb-24">Showcase</h1>
+        <div className="z-20 flex max-w-5xl flex-col gap-12 px-6">
           {projects.map((project, i) => (
             <div data-aos="fade-up" key={`${project.name}${i}`}>
               <ProjectCard project={project} />
             </div>
           ))}
           <div data-aos="fade-up">
-            <Button type="link" href="/projects" className="mx-auto mt-12">
+            <Button type="link" href="/projects" className="z-20 mx-auto mt-4">
               View more projects
             </Button>
           </div>
         </div>
       </div>
-      {/* <div className="h-40"></div> */}
+      <div className="h-40"></div>
       <Image
         src={wave3.src}
         width={wave3.width}
         height={wave3.height}
         alt="wave"
-        className="pointer-events-none h-full w-screen rounded-none object-cover object-center md:rounded-xl lg:-mt-24 xl:-mt-72"
+        className="pointer-events-none -mt-[300px] w-screen rounded-none object-cover object-center md:-mt-[380px] md:rounded-xl lg:-mt-[440px] xl:-mt-[540px]"
         style={{
           filter:
             "brightness(90%) opacity(60%) saturate(90%) contrast(80%) hue-rotate(-8deg)",
@@ -118,7 +134,7 @@ export default async function Home() {
                 key={`${skill.title}${i}`}
                 className="my-3 flex w-20 flex-col items-center justify-center place-self-center"
                 data-aos="fade-up"
-                data-aos-delay={i * 50}
+                data-aos-delay={i * 24}
               >
                 <Image
                   src={skill.image}
@@ -136,7 +152,7 @@ export default async function Home() {
           {!!skills?.skills?.length && (
             <div
               data-aos="fade-up"
-              data-aos-delay={skills?.skills?.length * 50}
+              data-aos-delay={skills?.skills?.length * 24}
             >
               <Button
                 type="link"

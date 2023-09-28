@@ -23,7 +23,7 @@ export default async function ContactPage() {
             height={worldDot.height / 1.2}
             className="pointer-events-none absolute pt-48 opacity-50"
             alt=""
-            data-aos="zoom-in"
+            data-aos=""
           />
           <div
             className="z-10 flex w-full max-w-2xl flex-col"

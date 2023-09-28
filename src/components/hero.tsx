@@ -25,7 +25,9 @@ export default function Hero({
           value={hero.header}
           components={{
             block: ({ children }) => (
-              <h1 className="text-center md:text-start">{children}</h1>
+              <h1 className="max-w-3xl text-center md:text-start">
+                {children}
+              </h1>
             ),
           }}
         />

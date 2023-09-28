@@ -7,6 +7,7 @@ import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 export default function Button({
   type = "button",
   styleType = "normal",
+  color = "accent",
   href,
   external,
   className,
@@ -15,17 +16,25 @@ export default function Button({
 }: {
   type?: "button" | "link";
   styleType?: "normal" | "normal2";
+  color?: "accent" | "secondary";
   href?: string;
   external?: boolean;
   className?: string;
   onClick?: () => void;
   children: ReactNode;
 }) {
+  function getColor() {
+    if (color === "accent") {
+      return "bg-accent";
+    } else if (color === "secondary") {
+      return "bg-light-gray";
+    }
+  }
   function getStyle() {
     if (styleType === "normal") {
-      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full bg-accent px-12 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${className}`;
+      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full px-12 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${getColor()} ${className}`;
     } else if (styleType === "normal2") {
-      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl bg-light-gray px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${className}`;
+      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${getColor()} ${className}`;
     }
   }
   return type === "button" ? (

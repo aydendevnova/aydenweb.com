@@ -41,6 +41,7 @@ export default function ProjectCard({ project }: { project: ProjectSchema }) {
             {!!liveLinkHref && (
               <Button
                 type="link"
+                color="secondary"
                 href={liveLinkHref}
                 external
                 styleType="normal2"
