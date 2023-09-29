@@ -6,7 +6,7 @@ import Script from "next/script";
 import LayoutClient from "./layoutClient";
 import { env } from "~/env.mjs";
 
-export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
+export const revalidate = env.NODE_ENV === "production" ? 3200 : 1;
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({

@@ -22,7 +22,7 @@ export default async function About() {
 
   return (
     <>
-      <div className="bg-light-gray">
+      <div className="bg-white">
         <div className="relative flex h-full min-h-screen flex-col justify-center">
           <Hero hero={hero.filter((hero) => hero.pathname === "/about")[0]}>
             <div data-aos="fade-up">
@@ -38,8 +38,8 @@ export default async function About() {
           </Hero>
         </div>
       </div>
-      <div className="mt-40 flex flex-col items-center">
-        <div className="flex max-w-4xl flex-col gap-24">
+      <div className="relative mt-40 flex flex-col items-center bg-light-gray">
+        <div className="flex max-w-4xl flex-col gap-24 pt-28">
           <div className="px-6">
             {!!about && about[0] && (
               <div
@@ -105,8 +105,9 @@ export default async function About() {
               ))}
           </div>
         </div>
+        <div className="h-60"></div>
       </div>
-      <div className="h-60"></div>
+
       <ContactPage />
     </>
   );
