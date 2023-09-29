@@ -21,11 +21,11 @@ export default async function ProjectPage({
         {!!project && (
           <div className=" flex flex-col items-center">
             <Image
-              src={project.image}
-              width={720}
-              height={720}
+              src={project.bannerImage ?? project.image}
+              width={2600}
+              height={900}
               alt="project banner"
-              className="h-[500px] w-screen object-cover object-center"
+              className="h-[600px] w-screen object-cover object-center"
               data-aos="fade-down"
             />
             <div className="w-full max-w-4xl">

@@ -13,6 +13,7 @@ export type ProjectSchema = {
   liveLink: string | undefined;
   content: string;
   image: string;
+  bannerImage: string;
 };
 
 const projectsSchema = defineType({
@@ -80,11 +81,16 @@ const projectsSchema = defineType({
       title: "Image",
       type: "image",
     }),
-    {
+    defineField({
+      name: "bannerImage",
+      title: "bannerImage",
+      type: "image",
+    }),
+    defineField({
       name: "content",
       title: "Content",
       type: "markdown",
-    },
+    }),
     defineField({
       name: "orderRank",
       title: "Order Rank",

@@ -81,6 +81,8 @@ export async function getProject(slug: string) {
       description,
       liveLink,
       "image": image.asset->url,
+      "bannerImage": bannerImage.asset->url,
+
       content,
     }`;
 

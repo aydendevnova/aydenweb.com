@@ -14,7 +14,6 @@ import ContactPage from "~/components/contact-page";
 import Hero from "~/components/hero";
 import ProjectCard from "~/components/ui/project-card";
 import wave3 from "~/assets/blue-wave-3.png";
-import { env } from "~/env.mjs";
 
 export const metadata: Metadata = {
   title: "Ayden: Your Developer",
@@ -22,8 +21,6 @@ export const metadata: Metadata = {
     "Realize your visions today. No more false promises - unlock your digital potential. Blending visionary thinking with technical expertise.",
   icons: ["/favicon.ico"],
 };
-
-export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
 export default async function Home() {
   const [hero, services, projects, skills] = await Promise.all([
