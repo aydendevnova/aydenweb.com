@@ -6,7 +6,7 @@ import Script from "next/script";
 import LayoutClient from "./layoutClient";
 import { env } from "~/env.mjs";
 
-export const revalidate = env.NODE_ENV === "production" ? 3200 : 1;
+export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
@@ -32,6 +32,7 @@ export default function RootLayout({
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-46XMST9KKY"
       />
+      <Script id="googletag">{`function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-46XMST9KKY");`}</Script>
       <body>
         <LayoutClient>
           <main className="relative">{children}</main>

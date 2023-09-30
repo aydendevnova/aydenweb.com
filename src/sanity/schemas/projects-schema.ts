@@ -11,6 +11,7 @@ export type ProjectSchema = {
   teamMembers: PortableTextBlock[];
   description: string;
   liveLink: string | undefined;
+  nextProjectSlug: string | undefined;
   content: string;
   image: string;
   bannerImage: string;
@@ -74,6 +75,11 @@ const projectsSchema = defineType({
     defineField({
       name: "liveLink",
       title: "Live Link",
+      type: "string",
+    }),
+    defineField({
+      name: "nextProjectSlug",
+      title: "Next Project Slug",
       type: "string",
     }),
     defineField({

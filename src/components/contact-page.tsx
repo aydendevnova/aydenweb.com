@@ -11,7 +11,7 @@ export default async function ContactPage() {
       <Image
         src={blueWave2.src}
         alt="contact decoration"
-        className="object-no-repeat pointer-events-none absolute -top-[160px] right-0 h-fit object-cover object-center"
+        className="object-no-repeat pointer-events-none absolute -top-[90px] right-0 h-fit object-cover object-center md:-top-[120px] lg:-top-[160px]"
         width={blueWave2.width}
         height={blueWave2.height}
       />

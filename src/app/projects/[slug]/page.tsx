@@ -6,6 +6,7 @@ import ContactPage from "~/components/contact-page";
 import Image from "next/image";
 import { type ReactNode } from "react";
 import { PortableText } from "@portabletext/react";
+import HighlightText from "~/components/highlight-text";
 
 export default async function ProjectPage({
   params,
@@ -36,20 +37,25 @@ export default async function ProjectPage({
                 <h1>{project.name}</h1>
                 <p className="max-w-xl">{project.description}</p>
                 {!!project?.liveLink && (
-                  <Button type="link" href={project.liveLink} className="mt-4">
+                  <Button
+                    type="link"
+                    href={project.liveLink}
+                    className="mt-4"
+                    external
+                  >
                     View live site
                   </Button>
                 )}
               </div>
-              <div className="md:px-4 lg:px-0" data-aos="fade-up">
-                <div className="flex flex-col items-center justify-between md:flex-row">
+              <div className="px-8 md:px-4" data-aos="fade-up">
+                <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                   <p>{project.timeline}</p>
-                  <i>
+                  <em>
                     {project.tags.map(
                       (tag, i) =>
                         `${tag} ${i < project.tags.length - 1 ? "• " : ""}`,
                     )}
-                  </i>
+                  </em>
                 </div>
                 <hr className="mb-6 w-full" />
               </div>
@@ -89,6 +95,9 @@ export default async function ProjectPage({
                   p: ({ children }) => (
                     <p className="mt-2 px-8 md:px-4">{children}</p>
                   ),
+                  em: ({ children }) => (
+                    <HighlightText>{children}</HighlightText>
+                  ),
                   strong: ({ children }) => (
                     <strong className="font-semibold">{children}</strong>
                   ),
@@ -103,16 +112,38 @@ export default async function ProjectPage({
                   ),
                   ol: ({ children }) => <ol>{children}</ol>,
                   li: ({ children }) => <li>{children}</li>,
+                  img: ({ src, alt }) => (
+                    <img
+                      src={src}
+                      alt={alt}
+                      className="mx-auto my-8 rounded-xl"
+                    />
+                  ),
                 }}
               />
             </div>
-            <Button
-              type="link"
-              href={project.liveLink}
-              className="z-10 mx-auto mt-24"
-            >
-              View live site
-            </Button>
+            <div className="mt-24 flex flex-col gap-8">
+              {!!project?.liveLink && (
+                <Button
+                  type="link"
+                  href={project.liveLink}
+                  className="z-10 mx-auto"
+                  color="secondary"
+                  external
+                >
+                  View live site
+                </Button>
+              )}
+              {!!project?.nextProjectSlug && (
+                <Button
+                  type="link"
+                  href={`/projects/${project.nextProjectSlug}`}
+                  className="z-10 mx-auto"
+                >
+                  Next Project
+                </Button>
+              )}
+            </div>
           </div>
         )}
       </div>

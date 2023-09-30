@@ -8,7 +8,7 @@ export default function ProjectCard({ project }: { project: ProjectSchema }) {
   const linkHref = `/projects/${project.slug}`;
   const liveLinkHref = project.liveLink;
   return (
-    <div className="flex max-w-6xl animate-fade flex-col justify-center md:flex-row">
+    <div className="flex min-h-[320px] max-w-6xl animate-fade flex-col justify-center md:flex-row">
       {/* Image Section */}
       <div>
         <Image

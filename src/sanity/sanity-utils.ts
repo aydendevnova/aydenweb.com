@@ -80,17 +80,14 @@ export async function getProject(slug: string) {
       teamMembers,
       description,
       liveLink,
+      nextProjectSlug,
       "image": image.asset->url,
       "bannerImage": bannerImage.asset->url,
-
       content,
     }`;
 
   const data = await client.fetch(query, {
     slug,
-    next: {
-      revalidate: 1, // look for updates to revalidate cache every hour
-    },
   });
 
   return data as ProjectSchema & {
