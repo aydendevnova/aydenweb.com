@@ -19,7 +19,7 @@ export default async function ProjectPage({
       <div className="relative flex flex-col items-center pb-32">
         {!project && <div>404 Project not found</div>}
         {!!project && (
-          <div className=" flex flex-col items-center">
+          <div className="flex flex-col items-center">
             <Image
               src={project.bannerImage ?? project.image}
               width={2600}
@@ -28,7 +28,7 @@ export default async function ProjectPage({
               className="h-[600px] w-screen object-cover object-center"
               data-aos="fade-down"
             />
-            <div className="w-full max-w-4xl">
+            <div className="w-full max-w-4xl px-2">
               <div
                 className="mb-28 flex flex-col items-center gap-2 pt-32 text-center"
                 data-aos="fade-up"

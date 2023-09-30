@@ -23,7 +23,7 @@ export default async function About() {
   return (
     <>
       <div className="bg-white">
-        <div className="relative flex h-full min-h-screen flex-col justify-center">
+        <div className="relative flex h-full min-h-screen animate-fade flex-col justify-center">
           <Hero hero={hero.filter((hero) => hero.pathname === "/about")[0]}>
             <div data-aos="fade-up">
               <Button
@@ -56,7 +56,7 @@ export default async function About() {
           </div>
 
           <div className="px-6">
-            <h2 className="pb-4 font-semibold" data-aos="fade-up">
+            <h2 className="pb-8 font-semibold" data-aos="fade-up">
               {quotes.header}
             </h2>
 
@@ -64,7 +64,7 @@ export default async function About() {
               {quotes.quotes.map((quote, i) => (
                 <div
                   key={`${quote.quoterTitle}${i}`}
-                  className="flex flex-col gap-2 rounded-xl bg-light-gray p-6 shadow-lg"
+                  className="flex flex-col gap-2 rounded-xl bg-white p-6 shadow-lg"
                   data-aos="fade-up"
                 >
                   <i>{quote.content}</i>

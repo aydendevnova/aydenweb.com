@@ -89,7 +89,7 @@ export default async function Home() {
           </div>
 
           <div
-            className="-mt-80 flex w-full flex-col items-center justify-center"
+            className="relative -mt-80 flex w-full flex-col items-center justify-center"
             data-aos="fade-up"
           >
             <h1 className="mb-24">Showcase</h1>
@@ -109,19 +109,23 @@ export default async function Home() {
                 </Button>
               </div>
             </div>
+            <div className="h-40"></div>
+            <div className="absolute bottom-0">
+              <div>
+                <Image
+                  src={wave3.src}
+                  width={wave3.width}
+                  height={wave3.height}
+                  alt="wave"
+                  className="pointer-events-none -mt-[300px] w-screen rounded-none object-cover object-center md:-mt-[380px] md:rounded-xl lg:-mt-[440px] xl:-mt-[540px]"
+                  style={{
+                    filter:
+                      "brightness(90%) opacity(60%) saturate(90%) contrast(80%) hue-rotate(-8deg)",
+                  }}
+                />
+              </div>
+            </div>
           </div>
-          <div className="h-40"></div>
-          <Image
-            src={wave3.src}
-            width={wave3.width}
-            height={wave3.height}
-            alt="wave"
-            className="pointer-events-none -mt-[300px] w-screen rounded-none object-cover object-center md:-mt-[380px] md:rounded-xl lg:-mt-[440px] xl:-mt-[540px]"
-            style={{
-              filter:
-                "brightness(90%) opacity(60%) saturate(90%) contrast(80%) hue-rotate(-8deg)",
-            }}
-          />
 
           <div className="h-12"></div>
           <div className="flex w-full flex-col items-center">

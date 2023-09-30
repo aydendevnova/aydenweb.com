@@ -11,7 +11,7 @@ export default function Hero({
 }) {
   return !hero ? null : (
     <>
-      <div className="fixed left-0 right-0 top-0 z-0 min-h-screen w-full bg-light-gray">
+      <div className="fixed left-0 right-0 top-0 z-0 min-h-screen w-full bg-white">
         <div
           className="absolute -left-24 h-full w-[120%] rotate-[-18deg] bg-contain bg-right-bottom bg-no-repeat opacity-40 md:top-36"
           style={{

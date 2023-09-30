@@ -54,7 +54,7 @@ export default function Header() {
       </header>
       <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Navigate">
         <div className="mx-auto flex w-64 flex-col gap-4 bg-light-gray backdrop-blur-md">
-          <Links setMenuOpen={setMenuOpen} />
+          <Links setMenuOpen={setMenuOpen} isMobile />
         </div>
       </Modal>
     </Mounted>
@@ -63,11 +63,16 @@ export default function Header() {
 
 function Links({
   setMenuOpen,
+  isMobile,
 }: {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  isMobile?: boolean;
 }) {
   return (
     <>
+      {isMobile && (
+        <HeaderLink text="Home" link="/" setMenuOpen={setMenuOpen} />
+      )}
       <HeaderLink text="About" link="/about" setMenuOpen={setMenuOpen} />
       <HeaderLink text="Contact" link="/contact" setMenuOpen={setMenuOpen} />
 
