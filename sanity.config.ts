@@ -1,9 +1,9 @@
 import { SchemaType, defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import schemas from "./src/sanity/schemas";
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { markdownSchema } from "sanity-plugin-markdown";
+import { structureTool } from "sanity/structure";
 
 const ORDERABLE_TYPES = ["projects", "about", "photos"];
 
@@ -16,7 +16,7 @@ export default defineConfig({
 
   plugins: [
     markdownSchema(),
-    deskTool({
+    structureTool({
       structure: (S, context) => {
         return S.list()
           .title("Content")
