@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
-import Hero from "~/components/hero";
+import Hero from "~/components/hero/hero";
 import PortableTextWithImageLink from "~/components/ui/portable-text-image-link";
 import Button from "~/components/ui/styled/Button";
 import { getAbout, getHero, getQuotes } from "~/sanity/sanity-utils";
