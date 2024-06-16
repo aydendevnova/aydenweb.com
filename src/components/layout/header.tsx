@@ -14,57 +14,49 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  return pathname.includes("/admin") ? null : (
+  return pathname.includes("/admin") || pathname.includes("/blog") ? null : (
     <Mounted>
-      <header className="fixed top-0 z-10 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
-        <div className="relative flex w-full items-center justify-between gap-4">
-          <div className="items-center">
-            <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-              <span className="flex w-full gap-2 rounded-md  px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
-                {/* <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span> */}
-                <Image
-                  src={logo.src}
-                  alt="logo"
-                  width={logo.width}
-                  height={logo.height}
-                  className="h-14 w-14"
-                  style={{ filter: "brightness(65%)" }}
-                />
-              </span>
-            </a>
-          </div>
-          <div className="flex shrink-0 items-center gap-2 rounded-md bg-white px-4 py-2 backdrop-blur-xl">
-            {pathname != "/" && (
-              <Link
-                href={"/"}
-                className="animate-in fade-in md:slide-in-from-right-10 duration-300"
-              >
-                <div className="py-1 pr-2 text-xl text-black">
-                  <BiArrowBack
-                    size={26}
-                    className="text-black transition-colors duration-300 hover:text-accent2"
-                  />
-                </div>
-              </Link>
-            )}
+      <header className="fixed left-0 right-0 top-0 z-10 flex w-full animate-fade px-4 py-1 pt-4 text-center lg:px-8">
+        <div className="relative w-full">
+          <Logo />
 
-            <div className="hidden shrink-0 items-center gap-6 py-1 md:flex">
-              <Links setMenuOpen={setMenuOpen} />
-            </div>
-            <div className="flex md:hidden">
-              <button className="header-link" onClick={() => setMenuOpen(true)}>
-                <RxHamburgerMenu
-                  size={30}
-                  className="transition-colors hover:text-accent"
-                />
-              </button>
+          <div className="absolute left-0 right-0 top-2 flex h-16 justify-end md:justify-center">
+            <div className="flex w-fit items-center rounded-[24px] bg-white px-4 py-2 shadow-lg">
+              {pathname != "/" && (
+                <Link
+                  href={"/"}
+                  className="animate-in fade-in md:slide-in-from-right-10 duration-300"
+                >
+                  {/* <div className="py-1 pr-2 text-xl text-black">
+                    <BiArrowBack
+                      size={26}
+                      className="text-black transition-colors duration-300 hover:text-accent2"
+                    />
+                  </div> */}
+                </Link>
+              )}
+
+              <div className="hidden shrink-0 items-center py-1 md:flex">
+                <Links setMenuOpen={setMenuOpen} pathname={pathname} />
+              </div>
+              <div className="flex md:hidden">
+                <button
+                  className="header-link"
+                  onClick={() => setMenuOpen(true)}
+                >
+                  <RxHamburgerMenu
+                    size={30}
+                    className="transition-colors hover:text-accent"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </header>
       <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Navigate">
-        <div className="mx-auto flex w-64 flex-col gap-4 bg-light-gray backdrop-blur-md">
-          <Links setMenuOpen={setMenuOpen} isMobile />
+        <div className="mx-auto flex w-64 flex-col gap-4 bg-light-gray">
+          <Links setMenuOpen={setMenuOpen} isMobile pathname={pathname} />
         </div>
       </Modal>
     </Mounted>
@@ -73,24 +65,48 @@ export default function Header() {
 
 function Links({
   setMenuOpen,
+  pathname,
   isMobile,
 }: {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  pathname: string;
   isMobile?: boolean;
 }) {
   return (
     <>
-      {isMobile && (
-        <HeaderLink text="Home" link="/" setMenuOpen={setMenuOpen} />
-      )}
-      <HeaderLink text="About" link="/about" setMenuOpen={setMenuOpen} />
-      <HeaderLink text="Contact" link="/contact" setMenuOpen={setMenuOpen} />
+      <HeaderLink
+        text="Home"
+        link="/"
+        setMenuOpen={setMenuOpen}
+        pathname={pathname}
+      />
 
+      <HeaderLink
+        text="About"
+        link="/about"
+        setMenuOpen={setMenuOpen}
+        pathname={pathname}
+      />
+
+      <HeaderLink
+        text="Contact"
+        link="/contact"
+        setMenuOpen={setMenuOpen}
+        pathname={pathname}
+      />
+      {/* <HeaderLink
+        text="Blog"
+        link="/blog"
+        setMenuOpen={setMenuOpen}
+        isNew
+        pathname={pathname}
+      /> */}
       <HeaderLink
         text="Resume"
         link={"/ayden-resume.pdf"}
         external
         setMenuOpen={setMenuOpen}
+        pathname={pathname}
       />
     </>
   );
@@ -101,11 +117,15 @@ function HeaderLink({
   link,
   setMenuOpen,
   external,
+  isNew,
+  pathname,
 }: {
   text: string;
   link: string;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
   external?: boolean;
+  isNew?: boolean;
+  pathname: string;
 }) {
   return (
     <Link
@@ -115,11 +135,38 @@ function HeaderLink({
       rel={external ? "noreferrer noopener" : ""}
     >
       <div
-        className="flex w-full cursor-pointer gap-2 rounded-full px-2 text-xl text-black transition-colors hover:text-accent2"
+        className={`relative flex w-full cursor-pointer rounded-[12px] px-4 py-2 text-xl text-black transition-colors duration-500 hover:text-accent2 ${
+          pathname === link
+            ? "rounded-[12px] bg-black text-white hover:text-light-gray "
+            : ""
+        }`}
         onClick={() => setMenuOpen(false)}
       >
         <p className="text-xl">{text}</p>
+        {isNew && (
+          <p className="text-gray-500 absolute -right-5 -top-3 z-10 rounded-full border border-blue-100 bg-blue-300 px-2 py-0.5 text-xs font-semibold text-gray">
+            New
+          </p>
+        )}
       </div>
     </Link>
+  );
+}
+
+function Logo() {
+  return (
+    <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
+      <span className="flex w-fit items-center rounded-md px-2 py-2 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
+        <p className="text-xl font-bold">aydens</p>
+        {/* <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span> */}
+        <Image
+          src={logo.src}
+          alt="logo"
+          width={logo.width}
+          height={logo.height}
+          className="h-6 w-6"
+        />
+      </span>
+    </a>
   );
 }

@@ -11,12 +11,12 @@ import {
 
 import Image from "next/image";
 import ContactPage from "~/components/contact-page";
-import Hero from "~/components/hero";
+import Hero from "~/components/hero/hero";
 import ProjectCard from "~/components/ui/project-card";
 import wave3 from "~/assets/blue-wave-3.png";
 
 export const metadata: Metadata = {
-  title: "Ayden: Your Developer",
+  title: "Ayden: Realizing Visions",
   description:
     "Realize your visions today. No more false promises - unlock your digital potential. Blending visionary thinking with technical expertise.",
   icons: ["/favicon.ico"],
@@ -32,7 +32,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="bg-light-gray">
+      <div className="">
         <div className="relative flex min-h-screen animate-fade flex-col justify-center">
           <Hero hero={hero.filter((hero) => hero.pathname === "/").at(0)}>
             <div className="flex flex-col items-center md:flex-row md:items-start md:gap-4">

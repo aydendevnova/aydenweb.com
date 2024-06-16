@@ -32,9 +32,9 @@ export default function Button({
   }
   function getStyle() {
     if (styleType === "normal") {
-      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-full px-12 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${getColor()} ${className}`;
+      return `text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-6 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${getColor()} ${className}`;
     } else if (styleType === "normal2") {
-      return `text-md text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${getColor()} ${className}`;
+      return `text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${getColor()} ${className}`;
     }
   }
   return type === "button" ? (
@@ -50,8 +50,8 @@ export default function Button({
       target={external ? "_blank" : ""}
       rel={external ? "noreferrer noopener" : ""}
     >
-      <p>{children}</p>
-      {external ? <FiArrowUpRight size={22} /> : <FiArrowRight size={22} />}
+      <p className="font-semibold">{children}</p>
+      {external ? <FiArrowUpRight size={24} /> : <FiArrowRight size={24} />}
     </Link>
   );
 }
