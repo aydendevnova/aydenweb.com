@@ -159,3 +159,22 @@ export async function getQuotes() {
 
   return data as QuoteSchema;
 }
+
+export async function getBlogs() {
+  const query = groq`*[_type == "blog"][0]{
+    title,
+    "slug": slug.current,
+    "publishDate": publishedAt,
+    "updatedDate": updatedAt,
+    tags,
+    category,
+    "thumbnail": image.asset->url,
+    content
+    
+
+  }`;
+
+  const data = await client.fetch(query);
+
+  return data as QuoteSchema;
+}

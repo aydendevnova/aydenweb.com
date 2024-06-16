@@ -7,7 +7,7 @@ import Button from "~/components/ui/styled/Button";
 import { getAbout, getHero, getQuotes } from "~/sanity/sanity-utils";
 
 export const metadata: Metadata = {
-  title: "About Ayden: Your Developer",
+  title: "About Ayden: Not Just Coding",
   description:
     "Learn about me. Choose concrete results instead of promises with Ayden's Full Stack expertise. Unlock your project's potential with just one click",
   icons: ["/favicon.ico"],

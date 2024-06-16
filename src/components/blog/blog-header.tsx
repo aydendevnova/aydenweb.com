@@ -10,17 +10,17 @@ import Mounted from "../mounted";
 import logo from "~/assets/logo.png";
 import Image from "next/image";
 
-export default function Header() {
+export default function BlogHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  return pathname.includes("/admin") || pathname.includes("/blog") ? null : (
+  return (
     <Mounted>
       <header className="fixed top-0 z-10 flex w-full animate-fade justify-between px-4 py-1 pt-4 text-center lg:px-8">
         <div className="relative flex w-full items-center justify-between gap-4">
           <div className="items-center">
-            <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-              <span className="flex w-full gap-2 rounded-md  px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
+            <a href={`https://${process.env.NEXT_PUBLIC_URL}/blog`}>
+              <span className="flex w-full items-center gap-4 rounded-md px-2 py-1 pb-3 pl-6 pr-7 pt-2.5 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
                 {/* <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span> */}
                 <Image
                   src={logo.src}
@@ -30,13 +30,14 @@ export default function Header() {
                   className="h-14 w-14"
                   style={{ filter: "brightness(65%)" }}
                 />
+                <h3>Ayden's Blog</h3>
               </span>
             </a>
           </div>
           <div className="flex shrink-0 items-center gap-2 rounded-md bg-white px-4 py-2 backdrop-blur-xl">
-            {pathname != "/" && (
+            {pathname != "/blog" && (
               <Link
-                href={"/"}
+                href={"/blog"}
                 className="animate-in fade-in md:slide-in-from-right-10 duration-300"
               >
                 <div className="py-1 pr-2 text-xl text-black">
@@ -81,16 +82,13 @@ function Links({
   return (
     <>
       {isMobile && (
-        <HeaderLink text="Home" link="/" setMenuOpen={setMenuOpen} />
+        <HeaderLink text="Home" link="/blog" setMenuOpen={setMenuOpen} />
       )}
-      <HeaderLink text="Blog" link="/blog" setMenuOpen={setMenuOpen} isNew />
-      <HeaderLink text="About" link="/about" setMenuOpen={setMenuOpen} />
-
-      <HeaderLink text="Contact" link="/contact" setMenuOpen={setMenuOpen} />
+      <HeaderLink text="Blog Home" link="/blog" setMenuOpen={setMenuOpen} />
 
       <HeaderLink
-        text="Resume"
-        link={"/ayden-resume.pdf"}
+        text="My Website"
+        link={"/"}
         external
         setMenuOpen={setMenuOpen}
       />

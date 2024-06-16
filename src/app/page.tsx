@@ -16,7 +16,7 @@ import ProjectCard from "~/components/ui/project-card";
 import wave3 from "~/assets/blue-wave-3.png";
 
 export const metadata: Metadata = {
-  title: "Ayden: Your Developer",
+  title: "Ayden: Realizing Visions",
   description:
     "Realize your visions today. No more false promises - unlock your digital potential. Blending visionary thinking with technical expertise.",
   icons: ["/favicon.ico"],

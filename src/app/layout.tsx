@@ -5,6 +5,7 @@ import Header from "~/components/layout/header";
 import Script from "next/script";
 import LayoutClient from "./layoutClient";
 import { env } from "~/env.mjs";
+import { useParams } from "next/navigation";
 
 export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
@@ -26,6 +27,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="en" className={`${inter.className} ${montserrat.className}`}>
       <Script
@@ -37,7 +39,6 @@ export default function RootLayout({
         <LayoutClient>
           <main className="relative">{children}</main>
         </LayoutClient>
-
         <Header />
       </body>
     </html>
