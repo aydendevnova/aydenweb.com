@@ -12,13 +12,13 @@ export default function Hero({
 }) {
   return !hero ? null : (
     <>
-      <div className="min-h-screen w-full overflow-hidden">
+      <div className="relative min-h-screen w-full overflow-hidden">
         <div
-          className="absolute -top-96 right-44 h-full w-[400px] scale-[200%] bg-contain bg-right-bottom bg-no-repeat"
+          className="absolute -top-96 right-44 h-full w-[600px] scale-[200%] bg-contain bg-right-bottom bg-no-repeat"
           style={{
             backgroundImage: `url(${ellipse13.src})`,
             // darken it
-            filter: "saturate(780%) hue-rotate(30deg)",
+            filter: " brightness(0.8)",
           }}
         ></div>
         <div className="z-10 flex h-full min-h-screen w-full animate-fade flex-col justify-center gap-3 px-8 pt-24 max-md:max-w-xl lg:flex-row">
@@ -49,7 +49,7 @@ export default function Hero({
 
             {children}
           </div>
-          <div className="mt-32 h-[390px] w-full max-lg:pb-12 md:ml-4 lg:w-[380px]">
+          <div className="mt-32 h-[390px] w-full max-lg:pb-12 lg:ml-10 lg:w-[380px] xl:ml-32">
             <ModelViewer />
           </div>
         </div>
