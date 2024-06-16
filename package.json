@@ -32,6 +32,7 @@
     "sanity-plugin-markdown": "^4.1.2",
     "styled-components": "^6.1.11",
     "tailwindcss-animated": "^1.1.0",
+    "three": "^0.165.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
