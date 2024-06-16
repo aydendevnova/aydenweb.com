@@ -15,7 +15,7 @@ export default async function ContactPage() {
         width={blueWave2.width}
         height={blueWave2.height}
       />
-      <div className="relative flex flex-col justify-between bg-accent2 px-6 pb-2">
+      <div className="relative flex flex-col justify-between bg-accent2 px-6 pb-2 pt-12">
         <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-center bg-no-repeat object-cover py-20">
           <Image
             src={worldDot.src}

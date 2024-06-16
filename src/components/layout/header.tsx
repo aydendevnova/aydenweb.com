@@ -136,7 +136,9 @@ function HeaderLink({
     >
       <div
         className={`relative flex w-full cursor-pointer rounded-[12px] px-4 py-2 text-xl text-black transition-colors duration-500 hover:text-accent2 ${
-          pathname === link ? "rounded-[12px] bg-black text-white  " : ""
+          pathname === link
+            ? "rounded-[12px] bg-black text-white hover:text-light-gray "
+            : ""
         }`}
         onClick={() => setMenuOpen(false)}
       >
