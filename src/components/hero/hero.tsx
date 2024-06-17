@@ -18,7 +18,7 @@ export default function Hero({
           style={{
             backgroundImage: `url(${ellipse13.src})`,
             // darken it
-            filter: " brightness(0.8)",
+            filter: "brightness(0.8) opacity(0.7)",
           }}
         ></div>
         <div className="z-10 flex h-full min-h-screen w-full animate-fade flex-col justify-center gap-3 px-8 pt-24 max-md:max-w-xl lg:flex-row">
