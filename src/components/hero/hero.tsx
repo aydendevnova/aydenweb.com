@@ -2,7 +2,6 @@ import { PortableText } from "@portabletext/react";
 import { type HeroSchema } from "~/sanity/schemas/hero-schema";
 import { type ReactNode } from "react";
 import ellipse13 from "~/assets/ellipse-13.png";
-import ModelViewer from "./model/model";
 export default function Hero({
   hero,
   children,
@@ -18,7 +17,7 @@ export default function Hero({
           style={{
             backgroundImage: `url(${ellipse13.src})`,
             // darken it
-            filter: "brightness(0.8) opacity(0.7)",
+            filter: "brightness(0.8) opacity(0.4)",
           }}
         ></div>
         <div className="z-10 flex h-full min-h-screen w-full animate-fade flex-col justify-center gap-3 px-8 pt-24 max-md:max-w-xl lg:flex-row">
@@ -49,9 +48,7 @@ export default function Hero({
 
             {children}
           </div>
-          <div className="mt-32 h-[390px] w-full max-lg:pb-12 lg:ml-10 lg:w-[380px] xl:ml-32">
-            <ModelViewer />
-          </div>
+          <div className="mt-32 h-[390px] w-full max-lg:pb-12 lg:ml-10 lg:w-[380px] xl:ml-32"></div>
         </div>
       </div>
     </>
