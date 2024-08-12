@@ -18,7 +18,7 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["cdn.sanity.io"],
+    remotePatterns: [{ hostname: "cdn.sanity.io" }],
   },
 };
 
