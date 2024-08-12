@@ -23,11 +23,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-46XMST9KKY"
-      />
-      <Script id="googletag">{`function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-46XMST9KKY");`}</Script>
       <body className={`${montserrat.className}`}>
         <LayoutClient>
           <main className="relative">{children}</main>
