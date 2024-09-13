@@ -3,18 +3,11 @@ import Button from "./ui/styled/Button";
 import Image from "next/image";
 import Footer from "./ui/footer";
 import { getContact } from "~/sanity/sanity-utils";
-import blueWave2 from "~/assets/blue-wave.png";
+
 export default async function ContactPage() {
   const contact = await getContact();
   return (
     <div className="relative">
-      <Image
-        src={blueWave2.src}
-        alt="contact decoration"
-        className="object-no-repeat pointer-events-none absolute -top-[90px] right-0 h-fit object-cover object-center md:-top-[120px] lg:-top-[160px]"
-        width={blueWave2.width}
-        height={blueWave2.height}
-      />
       <div className="relative flex flex-col justify-between bg-accent2 px-6 pb-2 pt-12">
         <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-center bg-no-repeat object-cover py-20">
           <Image

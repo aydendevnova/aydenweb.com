@@ -24,7 +24,7 @@ export default function PortableTextWithImageLink({
                   height={800}
                   src={value.href}
                   alt={text}
-                  className="my-8 h-60 w-full rounded-xl object-cover shadow-lg md:h-96"
+                  className="my-8 mt-20 h-60 w-full rounded-xl object-cover shadow-lg md:h-96"
                 />
               );
             }

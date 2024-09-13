@@ -3,7 +3,7 @@ import { type Dispatch, type SetStateAction, useState } from "react";
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
-import { BiArrowBack } from "react-icons/bi";
+
 import { RxHamburgerMenu } from "react-icons/rx";
 import Modal from "../ui/modal";
 import Mounted from "../mounted";
@@ -36,7 +36,7 @@ export default function Header() {
                 </Link>
               )}
 
-              <div className="hidden shrink-0 items-center py-1 md:flex">
+              <div className="hidden shrink-0 items-center gap-1 py-1 md:flex">
                 <Links setMenuOpen={setMenuOpen} pathname={pathname} />
               </div>
               <div className="flex md:hidden">
@@ -56,7 +56,7 @@ export default function Header() {
       </header>
       <Modal isOpen={menuOpen} setIsOpen={setMenuOpen} title="Navigate">
         <div className="mx-auto flex w-64 flex-col gap-4 bg-light-gray">
-          <Links setMenuOpen={setMenuOpen} isMobile pathname={pathname} />
+          <Links setMenuOpen={setMenuOpen} pathname={pathname} />
         </div>
       </Modal>
     </Mounted>
@@ -66,11 +66,9 @@ export default function Header() {
 function Links({
   setMenuOpen,
   pathname,
-  isMobile,
 }: {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
   pathname: string;
-  isMobile?: boolean;
 }) {
   return (
     <>
@@ -135,9 +133,9 @@ function HeaderLink({
       rel={external ? "noreferrer noopener" : ""}
     >
       <div
-        className={`relative flex w-full cursor-pointer rounded-[12px] px-4 py-2 text-xl text-black transition-colors duration-500 hover:text-accent2 ${
+        className={`relative flex w-full cursor-pointer rounded-[12px] px-3 py-2 text-xl text-black transition-colors duration-500 hover:text-accent2 ${
           pathname === link
-            ? "rounded-[12px] bg-black text-white hover:text-light-gray "
+            ? "rounded-[12px] bg-accent text-black hover:text-light-gray "
             : ""
         }`}
         onClick={() => setMenuOpen(false)}
@@ -156,15 +154,15 @@ function HeaderLink({
 function Logo() {
   return (
     <a href={`https://${process.env.NEXT_PUBLIC_URL}`}>
-      <span className="flex w-fit items-center rounded-md px-2 py-2 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
-        <p className="text-xl font-bold">aydens</p>
+      <span className="relative z-50 flex w-fit items-center gap-2 rounded-md px-2 py-2 text-xl text-slate-800 backdrop-blur-md transition-colors hover:text-accent2">
+        <p className="text-2xl font-bold">aydens</p>
         {/* <span className="mb-0">{process.env.NEXT_PUBLIC_URL}</span> */}
         <Image
           src={logo.src}
           alt="logo"
           width={logo.width}
           height={logo.height}
-          className="h-6 w-6"
+          className="h-8 w-8"
         />
       </span>
     </a>

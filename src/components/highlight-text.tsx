@@ -1,6 +1,6 @@
 "use client";
 import useOnScreen from "~/hooks/useOnScreen";
-import { ReactNode, useRef } from "react";
+import { type ReactNode, useRef } from "react";
 
 export default function HighlightText({
   children,

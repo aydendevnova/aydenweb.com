@@ -4,10 +4,13 @@
 
 @layer components {
   h1 {
-    @apply py-2 text-[38px] font-bold leading-tight text-black md:text-[48px];
+    @apply py-2 text-3xl font-semibold leading-tight text-black md:text-5xl;
   }
   h2 {
-    @apply text-[24px] font-normal text-gray md:text-[26px];
+    @apply text-2xl font-normal text-gray md:text-3xl;
+  }
+  h3 {
+    @apply text-[20px] text-black;
   }
 
   p,

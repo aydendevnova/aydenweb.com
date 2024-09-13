@@ -1,7 +1,6 @@
-import { Metadata } from "next";
+import { type Metadata } from "next";
 import Link from "next/link";
 import { useId } from "react";
-import { BiFilter } from "react-icons/bi";
 import BlogHeader from "~/components/blog/blog-header";
 
 export const metadata: Metadata = {

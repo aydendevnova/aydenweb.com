@@ -1,11 +1,10 @@
 import "~/styles/globals.css";
 import "aos/dist/aos.css";
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import Header from "~/components/layout/header";
 import Script from "next/script";
 import LayoutClient from "./layoutClient";
 import { env } from "~/env.mjs";
-import { useParams } from "next/navigation";
 
 export const revalidate = env.NODE_ENV === "production" ? 3200 : 0;
 
