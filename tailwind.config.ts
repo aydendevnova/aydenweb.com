@@ -20,7 +20,7 @@ export default {
       },
       colors: {
         "light-gray": "#F5F5F5",
-        accent: "#BFDCFE",
+        accent: "#CCCCFF",
         accent2: "#6C7794",
       },
     },

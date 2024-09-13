@@ -151,7 +151,8 @@ export async function getQuotes() {
       quoterName,
       content,
       quoterTitle,
-      "quoterImage": quoterImage.asset->url
+      "quoterImage": quoterImage.asset->url,
+
     }
   }`;
 

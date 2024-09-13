@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { type ReactNode } from "react";
-
+import { cn } from "~/app/utils/utils";
 import { FiArrowRight, FiArrowUpRight } from "react-icons/fi";
 export default function Button({
   type = "button",
@@ -45,7 +45,7 @@ export default function Button({
     </button>
   ) : (
     <Link
-      className={getStyle()}
+      className={cn(getStyle(), className)}
       href={href ?? "/"}
       target={external ? "_blank" : ""}
       rel={external ? "noreferrer noopener" : ""}

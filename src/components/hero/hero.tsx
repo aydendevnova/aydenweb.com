@@ -1,7 +1,8 @@
 import { PortableText } from "@portabletext/react";
 import { type HeroSchema } from "~/sanity/schemas/hero-schema";
 import { type ReactNode } from "react";
-import ellipse13 from "~/assets/ellipse-13.png";
+import Illustration from "../svg/illustration";
+
 export default function Hero({
   hero,
   children,
@@ -11,24 +12,16 @@ export default function Hero({
 }) {
   return !hero ? null : (
     <>
-      <div className="relative min-h-screen w-full overflow-hidden">
-        <div
-          className="absolute -top-96 right-44 h-full w-[600px] scale-[200%] bg-contain bg-right-bottom bg-no-repeat"
-          style={{
-            backgroundImage: `url(${ellipse13.src})`,
-            // darken it
-            filter: "brightness(0.8) opacity(0.4)",
-          }}
-        ></div>
-        <div className="z-10 flex h-full min-h-screen w-full animate-fade flex-col justify-center gap-3 px-8 pt-24 max-md:max-w-xl lg:flex-row">
-          <div className="pt-24 lg:max-w-2xl lg:pb-24">
-            <h2 className="hidden md:block">{hero.topText}</h2>
+      <div className="relative h-full min-h-screen w-full overflow-hidden bg-gradient-to-br from-white to-purple-100">
+        <div className="z-10 mx-auto flex h-fit w-full max-w-6xl animate-fade flex-col items-center justify-between gap-3 px-8 pt-24 max-md:max-w-xl lg:flex-row">
+          <div className="pt-32 lg:max-w-2xl lg:pb-24">
+            <h2 className="mb-8 hidden md:block">{hero.topText}</h2>
 
             <PortableText
               value={hero.header}
               components={{
                 block: ({ children }) => (
-                  <h1 className="max-w-3xl text-center md:text-start">
+                  <h1 className="text-center text-3xl font-semibold md:text-start md:text-5xl">
                     {children}
                   </h1>
                 ),
@@ -39,16 +32,18 @@ export default function Hero({
               value={hero.description}
               components={{
                 block: ({ children }) => (
-                  <h2 className="max-w-lg text-center max-md:mx-auto max-md:max-w-sm md:text-start">
+                  <p className="mt-8 max-w-lg text-center text-xl max-md:mx-auto max-md:max-w-sm md:text-start md:text-3xl">
                     {children}
-                  </h2>
+                  </p>
                 ),
               }}
             />
 
             {children}
           </div>
-          <div className="mt-32 h-[390px] w-full max-lg:pb-12 lg:ml-10 lg:w-[380px] xl:ml-32"></div>
+          <div className="mt-8">
+            <Illustration />
+          </div>
         </div>
       </div>
     </>
