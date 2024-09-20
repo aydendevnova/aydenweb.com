@@ -3,7 +3,7 @@ import ContactPage from "~/components/contact-page";
 import Hero from "~/components/hero/hero";
 import PortableTextWithImageLink from "~/components/ui/portable-text-image-link";
 import Button from "~/components/ui/styled/Button";
-import { getAbout, getHero, getQuotes } from "~/sanity/sanity-utils";
+import { getAbout, getHero } from "~/sanity/sanity-utils";
 
 export const metadata: Metadata = {
   title: "About Ayden: Not Just Coding",
@@ -13,11 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
-  const [hero, about, quotes] = await Promise.all([
-    getHero(),
-    getAbout(),
-    getQuotes(),
-  ]);
+  const [hero, about] = await Promise.all([getHero(), getAbout()]);
 
   return (
     <>
