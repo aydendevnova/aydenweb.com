@@ -32,7 +32,7 @@ export default function Button({
   }
   function getStyle() {
     if (styleType === "normal") {
-      return `text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-6 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${getColor()} ${className}`;
+      return `text-gray-800 hover:text-gray-600 items-center flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-6 py-4 transition-transform duration-200 hover:scale-105 shadow-lg ${getColor()} ${className}`;
     } else if (styleType === "normal2") {
       return `text-gray-800 hover:text-gray-600 flex max-w-fit shrink-0 animate-fade justify-center gap-1 rounded-xl px-8 py-3 transition-transform duration-200 hover:scale-105 shadow-md ${getColor()} ${className}`;
     }

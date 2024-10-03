@@ -80,6 +80,14 @@ function Links({
       />
 
       <HeaderLink
+        text="Gallery"
+        link="/gallery"
+        setMenuOpen={setMenuOpen}
+        pathname={pathname}
+        isNew
+      />
+
+      <HeaderLink
         text="About"
         link="/about"
         setMenuOpen={setMenuOpen}
