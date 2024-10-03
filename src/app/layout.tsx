@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.className}`}>
         <LayoutClient>
-          <main className="relative">{children}</main>
+          <main className="animate-in fade-in relative">{children}</main>
         </LayoutClient>
         <Header />
       </body>

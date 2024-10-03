@@ -102,6 +102,48 @@ export default async function Home() {
           </div>
         </div>
 
+        <div className="flex w-full flex-col items-center bg-gradient-to-br from-purple-50 to-purple-100 py-32">
+          <div className="flex w-full max-w-5xl flex-col items-center gap-8 px-8 text-center">
+            <h2 className="mb-4" data-aos="fade-up">
+              Explore The New Project Gallery
+            </h2>
+            <p
+              className="max-w-2xl text-lg"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              See the visual showcase of my latest projects. From web
+              applications to creative interfaces, discover the breadth of my
+              work.
+            </p>
+            <Button
+              type="link"
+              href="/gallery"
+              className="mt-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div className="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <span>View Gallery</span>
+              </div>
+            </Button>
+          </div>
+        </div>
+
         <div className="mx-auto my-48 max-w-5xl px-6">
           <h2 className="mb-20" data-aos="fade-up">
             {quotes.header}
