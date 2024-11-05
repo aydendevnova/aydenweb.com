@@ -9,6 +9,7 @@ import { type SkillSchema } from "./schemas/skills-schema";
 import { type ContactSchema } from "./schemas/contact-schema";
 import { type AboutSchema } from "./schemas/about-schema";
 import { type QuoteSchema } from "./schemas/quote-schema";
+import { type ArchiveSchema } from "./schemas/archive-schema";
 
 const client = createClient({
   projectId: env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -178,4 +179,19 @@ export async function getBlogs() {
   const data = await client.fetch(query);
 
   return data as QuoteSchema;
+}
+
+export async function getArchive() {
+  const query = groq`*[_type == "archive"]|order(orderRank){
+    "logo": logo.asset->url,
+    text,
+    "image": image.asset->url,
+    description,
+    liveLink,
+    sourceLink
+  }`;
+
+  const data = await client.fetch(query);
+
+  return data as ArchiveSchema[];
 }

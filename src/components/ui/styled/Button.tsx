@@ -50,7 +50,7 @@ export default function Button({
       target={external ? "_blank" : ""}
       rel={external ? "noreferrer noopener" : ""}
     >
-      <p className="font-semibold">{children}</p>
+      <div className="font-semibold">{children}</div>
       {external ? <FiArrowUpRight size={24} /> : <FiArrowRight size={24} />}
     </Link>
   );

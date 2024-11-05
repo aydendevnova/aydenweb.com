@@ -84,7 +84,6 @@ function Links({
         link="/gallery"
         setMenuOpen={setMenuOpen}
         pathname={pathname}
-        isNew
       />
 
       <HeaderLink
@@ -92,6 +91,13 @@ function Links({
         link="/about"
         setMenuOpen={setMenuOpen}
         pathname={pathname}
+      />
+      <HeaderLink
+        text="Archive"
+        link="/archive"
+        setMenuOpen={setMenuOpen}
+        pathname={pathname}
+        isNew
       />
 
       <HeaderLink

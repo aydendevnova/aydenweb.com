@@ -8,7 +8,7 @@ export default async function ContactPage() {
   const contact = await getContact();
   return (
     <div className="relative">
-      <div className="relative flex flex-col justify-between bg-accent2 px-6 pb-2 pt-12">
+      <div className="relative flex flex-col justify-between bg-slate-900 px-6 pb-2 pt-12">
         <div className="relative flex min-h-screen w-full flex-col items-center justify-center bg-center bg-no-repeat object-cover py-20">
           <Image
             src={worldDot.src}
@@ -41,7 +41,7 @@ export default async function ContactPage() {
                   name="name"
                   id="name"
                   required
-                  className="border-2 border-gray-300 bg-accent2/60  px-4 py-4 text-white outline-gray-400/70 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
+                  className="border-2 border-gray-500 bg-slate-800/60 px-4 py-4 text-white outline-gray-400/70 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -54,7 +54,7 @@ export default async function ContactPage() {
                   name="email"
                   id="email"
                   required
-                  className="border-2 border-gray-300 bg-accent2/60 px-4 py-4 text-white outline-gray-400/70 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
+                  className="border-2 border-gray-500 bg-slate-800/60 px-4 py-4 text-white outline-gray-400/70 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -68,7 +68,7 @@ export default async function ContactPage() {
                   rows={5}
                   cols={33}
                   required
-                  className="resize-none rounded-md border-2 border-gray-300 bg-accent2/60 px-4 py-4 text-white outline-gray-100 ring-0 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
+                  className="resize-none rounded-md border-2 border-gray-500 bg-slate-800/60 px-4 py-4 text-white outline-gray-100 ring-0 backdrop-blur-md placeholder:text-slate-200 focus:border-gray-100"
                 />
               </div>
 

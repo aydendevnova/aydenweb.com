@@ -6,6 +6,7 @@ import skillsSchema from "./skills-schema";
 import contactSchema from "./contact-schema";
 import aboutSchema from "./about-schema";
 import quoteSchema from "./quote-schema";
+import archiveSchema from "./archive-schema";
 
 const schemas = [
   heroSchema,
@@ -16,6 +17,7 @@ const schemas = [
   contactSchema,
   aboutSchema,
   quoteSchema,
+  archiveSchema,
 ];
 
 export default schemas;
