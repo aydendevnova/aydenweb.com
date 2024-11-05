@@ -102,45 +102,76 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col items-center bg-gradient-to-br from-purple-50 to-purple-100 py-32">
+        <div className="flex w-full flex-col items-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-32">
           <div className="flex w-full max-w-5xl flex-col items-center gap-8 px-8 text-center">
-            <h2 className="mb-4" data-aos="fade-up">
-              Explore The New Project Gallery
+            <h2
+              className="mb-4 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent"
+              data-aos="fade-up"
+            >
+              Discover My Creative Universe
             </h2>
             <p
-              className="max-w-2xl text-lg"
+              className="text-gray-700 max-w-2xl text-lg"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              See the visual showcase of my latest projects. From web
-              applications to creative interfaces, discover the breadth of my
-              work.
+              Check out these two unique experiences. Choose a stunning
+              <br /> <b>visual gallery</b>, or a comprehensive{" "}
+              <b>project archive</b> detailing the technology and innovation
+              behind each creation.
             </p>
-            <Button
-              type="link"
-              href="/gallery"
-              className="mt-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>View Gallery</span>
-              </div>
-            </Button>
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+              <Button
+                type="link"
+                href="/gallery"
+                className="mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-200 transition-all hover:shadow-xl hover:shadow-indigo-300"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span>Visual Gallery</span>
+                </div>
+              </Button>
+              <Button
+                type="link"
+                href="/archive"
+                className="mt-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-200 transition-all hover:shadow-xl hover:shadow-purple-300"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div className="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    />
+                  </svg>
+                  <span>Project Archive</span>
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -196,7 +227,7 @@ export default async function Home() {
                 </div>
               </div>
 
-              <div className="mx-auto mt-20 flex flex-col flex-wrap gap-16 lg:flex-row">
+              <div className="mx-auto mt-20 flex flex-col flex-wrap items-center justify-center gap-16 lg:flex-row">
                 {services.services.map((service, i) => (
                   <div
                     key={`${service.serviceName}${i}`}
@@ -222,6 +253,17 @@ export default async function Home() {
                     />
                   </div>
                 ))}
+                <div
+                  className="mt-12 flex w-full flex-col items-center gap-4"
+                  data-aos="fade-up"
+                >
+                  <h3 className="text-center">
+                    Are you ready for what's next?
+                  </h3>
+                  <Button type="link" href="/contact" className="mt-4">
+                    Contact Me
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -230,7 +272,7 @@ export default async function Home() {
             className="relative -mt-60 flex w-full flex-col items-center justify-center"
             data-aos="fade-up"
           >
-            <h1 className="mb-24">Showcase</h1>
+            <h1 className="mb-24">Case Studies</h1>
             <div className="z-20 flex max-w-5xl flex-col gap-12 px-6">
               {projects.map((project, i) => (
                 <div data-aos="fade-up" key={`${project.name}${i}`}>
@@ -240,20 +282,36 @@ export default async function Home() {
               <div data-aos="fade-up">
                 <Button
                   type="link"
-                  href="/projects"
+                  href="/archive"
                   className="z-20 mx-auto mt-24"
                 >
-                  View more projects
+                  View Project Archives
                 </Button>
               </div>
             </div>
-            <div className="h-40"></div>
           </div>
 
           <div className="h-60"></div>
         </div>
       </div>
-
+      <div className="flex w-full flex-col items-center bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-32">
+        <div
+          className="relative flex w-full flex-col items-center justify-center gap-6 px-6"
+          data-aos="fade-up"
+        >
+          <h3 className="text-center text-3xl font-semibold text-black">
+            Want to learn more about my experience?
+          </h3>
+          <Button
+            type="link"
+            href="/ayden-resume.pdf"
+            className="hover:shadow-purple-30 mt-4 bg-white bg-gradient-to-r from-purple-400 to-pink-500  text-white shadow-lg shadow-purple-200 transition-all hover:bg-gray-100 hover:shadow-xl"
+          >
+            View My Resume
+          </Button>
+        </div>
+      </div>
+      <div className="h-60"></div>
       <ContactPage />
     </>
   );

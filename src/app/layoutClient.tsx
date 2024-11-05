@@ -15,14 +15,14 @@ export default function LayoutClient({
       duration: 400,
       easing: "ease-out-sine",
     });
-    const lenis = new Lenis();
+    // const lenis = new Lenis();
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // function raf(time: number) {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // }
 
-    requestAnimationFrame(raf);
+    // requestAnimationFrame(raf);
   }, []);
   return children;
 }

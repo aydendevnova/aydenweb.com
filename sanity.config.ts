@@ -5,7 +5,7 @@ import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { markdownSchema } from "sanity-plugin-markdown";
 import { structureTool } from "sanity/structure";
 
-const ORDERABLE_TYPES = ["projects", "about", "photos"];
+const ORDERABLE_TYPES = ["projects", "about", "photos", "archive"];
 
 export default defineConfig({
   name: "default",
@@ -32,6 +32,7 @@ export default defineConfig({
             orderableDocumentListDeskItem({ type: "photos", S, context }),
             orderableDocumentListDeskItem({ type: "projects", S, context }),
             orderableDocumentListDeskItem({ type: "about", S, context }),
+            orderableDocumentListDeskItem({ type: "archive", S, context }),
           ]);
       },
     }),
