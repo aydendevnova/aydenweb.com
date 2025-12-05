@@ -93,7 +93,7 @@ function Links({
         pathname={pathname}
       />
       <HeaderLink
-        text="Archive"
+        text="Projects"
         link="/archive"
         setMenuOpen={setMenuOpen}
         pathname={pathname}
